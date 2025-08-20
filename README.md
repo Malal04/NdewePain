@@ -25,3 +25,98 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+ndewe-pain/
+├── src/
+│   ├── app/
+│   │   ├── components/       # Composants Angular (UI)
+│   │   ├── services/         # Services pour API / logique métier
+│   │   ├── models/           # Interfaces et classes TypeScript
+│   │   ├── guards/           # Gestion des droits d'accès (rôles)
+│   │   ├── pages/            # Pages principales (Dashboard, Catalogue...)
+│   │   └── app.module.ts
+│   ├── assets/               # Images, promotions, icônes
+│   ├── environments/         # Configuration dev/prod
+│   └── index.html
+├── angular.json
+├── package.json
+└── README.md
+
+2️⃣ Modules / Pages à créer
+Pour tous les utilisateurs
+
+Accueil / Catalogue : liste produits, catégories, filtres, promotions.
+
+Promotions & Packs : affichage dynamique avec dates de validité.
+
+Chat support : chat en temps réel, éventuellement IA (optionnel).
+
+Client
+
+Profil client : historique des commandes, factures PDF.
+
+Panier et paiement : choix livraison / paiement en ligne.
+
+Suivi commande : statut en temps réel avec notifications.
+
+Employé
+
+Gestion commandes : mise à jour statut (préparation, livraison, livrée).
+
+Suivi livraisons : visualisation et notifications.
+
+Assistance client via chat.
+
+Administrateur / Gérant
+
+Gestion utilisateurs : création, modification, suppression (Admin + Employé).
+
+Gestion produits et stocks : CRUD complet, prix, description, photos, allergènes.
+
+Gestion promotions et packs : création, validité, application automatique.
+
+Statistiques : ventes, commandes, produits populaires.
+
+3️⃣ Services clés Angular
+
+AuthService : connexion, logout, vérification rôle.
+
+ProductService : récupération, création, mise à jour des produits.
+
+OrderService : passage de commande, suivi, mises à jour.
+
+PromotionService : création et gestion des promotions.
+
+ChatService : communication en temps réel pour support client.
+
+InvoiceService : génération et téléchargement PDF des factures.
+
+4️⃣ Sécurité et rôles
+
+Angular Route Guards : AuthGuard, RoleGuard pour protéger les routes selon les rôles.
+
+JWT (JSON Web Token) pour authentification côté frontend et backend.
+
+Validation côté frontend et backend pour toutes les entrées utilisateur.
+
+5️⃣ Conseils pour le développement
+
+Commence par la base : Authentification + Catalogue produits.
+
+Ensuite les commandes : panier, paiement, suivi.
+
+Puis promotions et packs : application automatique des réductions.
+
+Chat support : peut être intégré en dernier, éventuellement avec WebSocket.
+
+Facturation : génération PDF côté backend (ex. library pdfmake pour Angular).
+
+6️⃣ Livraison / Livrables
+
+Code versionné sur GitHub.
+
+Démonstration vidéo ou live.
+
+Documentation claire : README + guide de déploiement.
+
+Tests unitaires pour les fonctions critiques
