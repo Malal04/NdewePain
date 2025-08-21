@@ -1,0 +1,170 @@
+.jumbo {
+    padding: 50px 20px;
+    background: linear-gradient(to right, #fdf6e3, #fffaf0);
+}
+
+.jumbo-content {
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+/* Section Produits */
+.products h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #d2691e;
+    font-weight: 700;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.card .info {
+    padding: 15px;
+    text-align: center;
+}
+
+.card .info h3 {
+    font-size: 1.2rem;
+    margin: 10px 0 5px;
+    color: #8b4513;
+}
+
+.card .info p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Section Promotions */
+.promotions {
+    margin-top: 60px;
+}
+
+.promotions h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #d2691e;
+    font-weight: 700;
+}
+
+.promo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.promo {
+    background-color: #fff3e0;
+    border-left: 5px solid #ff8c00;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.promo:hover {
+    background-color: #ffe6cc;
+}
+
+.promo .discount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ff4500;
+    background-color: #fff5e6;
+    padding: 10px 15px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.promo div h4 {
+    margin: 0 0 5px;
+    font-size: 1.2rem;
+    color: #8b4513;
+}
+
+.promo div p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.card, .promo {
+    cursor: pointer; /* déjà présent pour card et promo */
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.card:hover, .promo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card img {
+        height: 180px;
+    }
+
+    .promo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .promo .discount {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .products h2,
+    .promotions h2 {
+        font-size: 1.5rem;
+    }
+
+    .card .info h3 {
+        font-size: 1rem;
+    }
+
+    .card .info p {
+        font-size: 0.9rem;
+    }
+
+    .promo div h4 {
+        font-size: 1rem;
+    }
+
+    .promo div p {
+        font-size: 0.85rem;
+    }
+}

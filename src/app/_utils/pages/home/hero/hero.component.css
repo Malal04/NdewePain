@@ -4,7 +4,7 @@
 .hero {
   position: relative;
   width: 100%;
-  height: 70vh; /* prend presque tout l'écran */
+  height: 75vh; /* prend presque tout l'écran */
   background: url('../../../../../assets/hero.png') center/cover no-repeat;
   display: flex;
   flex-direction: column;
@@ -46,10 +46,10 @@
 /* Bouton */
 .btn-order {
   display: inline-block;
-  padding: 12px 30px;
+  padding: 16px 24px;
   background: #d35400;
   color: #fff;
-  border-radius: 30px;
+  border-radius: 20px;
   font-weight: 600;
   font-size: 1rem;
   text-decoration: none;
