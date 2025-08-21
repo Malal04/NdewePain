@@ -1,1 +1,32 @@
-<p>header works!</p>
+<div class="header">
+   <div class="container_header">
+        <div class="header_content">
+            <!-- LOGO -->
+            <div class="header_logo">
+                <img src="../../../assets/logo.png" alt="Logo NdewePain">
+            </div>
+
+            <!-- HAMBURGER (mobile) -->
+            <div class="hamburger" (click)="toggleMenu()">
+                <i class="fa fa-bars"></i>
+            </div>
+
+            <!-- MENU -->
+            <div class="header_menu" [class.active]="menuOpen">
+                <ul class="header_menu_list">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li class="header_menu_list_cart">
+                        <i class="fa fa-shopping-cart"></i>
+                    </li>
+                    <li class="header_menu_list_login">
+                        <a href="#">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+  </div>
+</div>
