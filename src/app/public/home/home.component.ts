@@ -4,6 +4,8 @@ import { HeroComponent } from "../../_utils/pages/home/hero/hero.component";
 import { JumboComponent } from "../../_utils/pages/home/jumbo/jumbo.component";
 import { BlogComponent } from "../../_utils/pages/home/blog/blog.component";
 import { SgroupComponent } from "../../_utils/pages/home/sgroup/sgroup.component";
+import { ContactComponent } from "../../_utils/pages/home/contact/contact.component";
+import { FooterComponent } from "../../_utils/footer/footer.component";
 
 @Component({
   selector: 'app-home',
@@ -13,7 +15,9 @@ import { SgroupComponent } from "../../_utils/pages/home/sgroup/sgroup.component
     HeroComponent,
     JumboComponent,
     BlogComponent,
-    SgroupComponent
+    SgroupComponent,
+    ContactComponent,
+    FooterComponent
 ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
