@@ -1,1 +1,119 @@
-<p>gallery works!</p>
+<header class="gallery-header">
+    <app-header></app-header>
+</header>
+<div class="gallery">
+    <main class="gallery-container">
+        <header>
+            <h1>Notre Histoire en Images</h1>
+            <p class="subtitle">
+                Découvrez notre univers à travers une sélection de photos.  
+                Du pain quotidien aux créations spéciales, chaque image reflète notre passion et notre savoir-faire artisanal.  
+                Cliquez sur une photo pour l’agrandir.
+            </p>
+        </header>
+
+        <!-- Grille d’images -->
+        <section class="image-grid">
+            <img src="../../../assets/Rectangle3.png" alt="Pain frais" class="gallery-img">
+            <img src="../../../assets/Rectangle4.png" alt="Croissant doré" class="gallery-img">
+            <img src="../../../assets/Rectangle5.png" alt="Intérieur de la boulangerie" class="gallery-img">
+            <img src="../../../assets/Rectangle6.png" alt="Salle lumineuse minimaliste" class="gallery-img">
+            <img src="../../../assets/Rectangle7.png" alt="Grand croissant" class="gallery-img tall">
+            <img src="../../../assets/Rectangle8.png" alt="Gâteau artisanal" class="gallery-img">
+            <img src="../../../assets/Rectangle9.png" alt="Façade de la boulangerie" class="gallery-img">
+            <img src="../../../assets/Rectangle10.png" alt="Espace rustique" class="gallery-img">
+            <img src="../../../assets/Rectangle11.png" alt="Pain rond" class="gallery-img">
+            <img src="../../../assets/Rectangle12.png" alt="Muffin moelleux" class="gallery-img">
+            <img src="../../../assets/Rectangle13.png" alt="Cuisine en pleine préparation" class="gallery-img">
+            <img src="../../../assets/Rectangle14.png" alt="Panier de pains" class="gallery-img">
+        </section>
+
+        <!-- Bouton Instagram -->
+        <div class="cta-instagram">
+            <a href="https://instagram.com" target="_blank" class="btn-instagram">
+            <span><i class="fa fa-instagram"></i> Suivez-nous sur Instagram</span>
+            </a>
+        </div>
+    </main>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+</div>
+<div> 
+    <main class="loyalty-container">
+        <!-- En-tête -->
+        <header class="program-header">
+            <h1>Rejoignez Notre Programme de Fidélité</h1>
+            <p>
+            Cumulez des points et savourez des récompenses gourmandes à chaque achat.  
+            C’est notre façon de vous remercier pour votre fidélité.
+            </p>
+        </header>
+
+        <!-- Comment ça marche -->
+        <section class="how-it-works card">
+            <h2>Comment ça marche ?</h2>
+            <div class="steps">
+            <div class="step">
+                <i class="ph ph-sun"></i>
+                <h3>Gagnez des Points</h3>
+                <p>Obtenez <strong>1 point</strong> pour chaque <strong>1 €</strong> dépensé en boutique.</p>
+            </div>
+            <div class="step">
+                <i class="ph ph-gift"></i>
+                <h3>Échangez vos Récompenses</h3>
+                <p>Utilisez vos points pour obtenir des réductions, douceurs offertes et plus encore.</p>
+            </div>
+            <div class="step">
+                <i class="ph ph-smiley"></i>
+                <h3>Profitez d’Avantages</h3>
+                <p>Bénéficiez d’offres exclusives et de surprises pour votre anniversaire.</p>
+            </div>
+            </div>
+        </section>
+
+        <!-- Récompenses -->
+        <section class="rewards">
+            <h2>Nos Récompenses</h2>
+            <div class="reward-grid">
+            <div class="reward-card">
+                <img src="../../../assets/Rectangle8.png" alt="Pâtisserie artisanale">
+                <div class="reward-info">
+                <h3>Pâtisserie Offerte</h3>
+                <p>Échangez vos points pour la gourmandise de votre choix.</p>
+                <span class="points">50 Points</span>
+                </div>
+            </div>
+            <div class="reward-card">
+                <img src="../../../assets/Rectangle9.png" alt="Pain frais">
+                <div class="reward-info">
+                <h3>5 € de Réduction</h3>
+                <p>Profitez d’une remise immédiate sur votre prochaine commande.</p>
+                <span class="points">100 Points</span>
+                </div>
+            </div>
+            <div class="reward-card">
+                <img src="../../../assets/cafe.png" alt="Café chaud">
+                <div class="reward-info">
+                <h3>Café Offert</h3>
+                <p>Dégustez un café préparé avec soin, offert par la maison.</p>
+                <span class="points">25 Points</span>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- Points de l'utilisateur -->
+        <section class="your-points card">
+            <h2>Vos Points</h2>
+            <p>Connectez-vous pour consulter votre solde et échanger vos récompenses.</p>
+            <a href="#" class="btn-login">Se Connecter</a>
+        </section>
+    </main>
+</div>
+<div class="gallery-footer">
+    <app-footer></app-footer>
+</div>

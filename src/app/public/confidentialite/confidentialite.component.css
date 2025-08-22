@@ -1,0 +1,85 @@
+/* Container principal */
+.legal-container {
+  max-width: 950px;
+  margin: 50px auto;
+  background: #ffffff;
+  padding: 50px 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  line-height: 1.7;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+.legal {
+    margin-top: 80px;
+}
+
+/* Header */
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.last-updated {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 35px;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Sections */
+.legal-section {
+  margin-bottom: 32px;
+}
+
+.legal-section h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 12px;
+  border-left: 5px solid #e67e22;
+  padding-left: 12px;
+}
+
+.legal-section p {
+  font-size: 1rem;
+  color: #555;
+  text-align: justify;
+}
+
+/* Liens */
+a {
+  color: #e67e22;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #c45d00;
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .legal-container {
+    padding: 30px 20px;
+    margin: 25px 15px;
+  }
+
+  header h1 {
+    font-size: 1.6rem;
+  }
+
+  .legal-section h2 {
+    font-size: 1.1rem;
+  }
+
+  .legal-section p {
+    font-size: 0.95rem;
+  }
+}

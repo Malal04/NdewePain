@@ -3,12 +3,12 @@ import { HeaderComponent } from "../../_utils/header/header.component";
 import { FooterComponent } from "../../_utils/footer/footer.component";
 
 @Component({
-  selector: 'app-gallery',
+  selector: 'app-profil',
   standalone: true,
   imports: [HeaderComponent, FooterComponent],
-  templateUrl: './gallery.component.html',
-  styleUrl: './gallery.component.css'
+  templateUrl: './profil.component.html',
+  styleUrl: './profil.component.css'
 })
-export class GalleryComponent {
+export class ProfilComponent {
 
 }
