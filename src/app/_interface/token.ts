@@ -1,11 +1,10 @@
-import { Role } from "../_enum/dtos";
 import { User } from "./user";
+import { Role } from "../_enum/dtos";
 
 export interface Token {
-    accessToken: string;
-    refreshToken: string;
-    message: string;
     user: User;
-    id : number;
+    message: string;
+    token: string;
     role: Role;
+    refreshToken: string;
 }

@@ -8,7 +8,7 @@
 }
 
 .gallery {
-    margin-top: 90px;
+  margin-top: 90px;
 }
 
 header h1 {
@@ -30,8 +30,8 @@ header h1 {
 /* Grille d’images */
 .image-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 20px;
 }
 
 .gallery-img {

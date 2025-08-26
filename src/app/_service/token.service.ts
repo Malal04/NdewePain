@@ -51,7 +51,7 @@ export class TokenService {
   getRole(): Role | null {
     const role = localStorage.getItem('role');
     if (!role) return null;
-    return Number(role) as Role;
+    return role as Role;
   }
   
   isAdmin(): boolean {

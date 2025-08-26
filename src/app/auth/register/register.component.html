@@ -1,1 +1,101 @@
-<p>register works!</p>
+<div class="register">
+  <div class="register-container">
+    <!-- Partie gauche -->
+    <div class="register-left">
+      <div class="brand">
+        <img src="../../../assets/logo.png" alt="Logo Ndewé Pain">
+        <h2>Ndewé Pain</h2>
+        <p>La fraîcheur, la chaleur et la tradition artisanale</p>
+      </div>
+      <p class="intro">
+        Rejoignez notre grande famille gourmande et profitez des saveurs artisanales,
+        en toute simplicité.
+      </p>
+      <img src="../../../assets/login.png" alt="Illustration inscription" class="illustration">
+    </div>
+
+    <!-- Partie droite -->
+    <div class="register-right">
+      <div class="title">
+        <h2>Créer un compte</h2>
+        <p>Veuillez renseigner vos informations pour continuer</p>
+      </div>
+
+      <form class="group-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <!-- Nom -->
+        <div class="input-group">
+          <i class="fa fa-user"></i>
+          <input type="text" placeholder="Nom complet" formControlName="nom" required>
+        </div>
+        <div *ngIf="registerForm.get('nom')?.invalid && (registerForm.get('nom')?.touched || registerForm.get('nom')?.dirty)" class="auth__error">
+          Le nom complet est requis.
+        </div>
+
+        <!-- Email -->
+        <div class="input-group">
+          <i class="fa fa-envelope"></i>
+          <input type="email" placeholder="Adresse e-mail" formControlName="email" required>
+        </div>
+        <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)" class="auth__error">
+          Une adresse e-mail valide est requise.
+        </div>
+
+        <!-- Téléphone -->
+        <div class="input-group">
+          <i class="fa fa-phone"></i>
+          <input type="text" placeholder="Téléphone (+221...)" formControlName="telephone" required>
+        </div>
+        <div *ngIf="registerForm.get('telephone')?.invalid && (registerForm.get('telephone')?.touched || registerForm.get('telephone')?.dirty)" class="auth__error">
+          Le numéro de téléphone est requis.
+        </div>
+
+        <!-- Adresse -->
+        <div class="input-group">
+          <i class="fa fa-map-marker"></i>
+          <input type="text" placeholder="Adresse complète" formControlName="adresse" required>
+        </div>
+        <div *ngIf="registerForm.get('adresse')?.invalid && (registerForm.get('adresse')?.touched || registerForm.get('adresse')?.dirty)" class="auth__error">
+          L’adresse est requise.
+        </div>
+
+        <!-- Mot de passe -->
+        <div class="input-group">
+          <i class="fa fa-lock"></i>
+          <input type="password" placeholder="Mot de passe" formControlName="password" required>
+        </div>
+        <div *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)" class="auth__error">
+          Le mot de passe est requis.
+        </div>
+
+        <!-- Confirmation mot de passe -->
+        <div class="input-group">
+          <i class="fa fa-lock"></i>
+          <input type="password" placeholder="Confirmer le mot de passe" formControlName="password_confirmation" required>
+        </div>
+        <div *ngIf="registerForm.get('password_confirmation')?.invalid && (registerForm.get('password_confirmation')?.touched || registerForm.get('password_confirmation')?.dirty)" class="auth__error">
+          La confirmation du mot de passe est requise.
+        </div>
+
+        <!-- Role caché (customer par défaut) -->
+        <input type="hidden" formControlName="role" value="customer">
+
+        <!-- Bouton -->
+        <div class="group-button">
+          <button type="submit" [disabled]="registerForm.invalid" class="btn">S’inscrire</button>
+        </div>
+
+        <!-- Lien vers login -->
+        <p class="signup">
+          Vous avez déjà un compte ?
+          <a href="/auth/login">Se connecter</a>
+        </p>
+      </form>
+
+      <!-- Message d’erreur backend -->
+      <div *ngIf="message" class="auth__error">
+        {{ message }}
+      </div>
+    </div>
+  </div>
+</div>

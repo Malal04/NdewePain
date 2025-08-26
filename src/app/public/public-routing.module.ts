@@ -6,6 +6,7 @@ import { ConditionsComponent } from './conditions/conditions.component';
 import { ConfidentialiteComponent } from './confidentialite/confidentialite.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { ProfilComponent } from './profil/profil.component';
+import { PromotionComponent } from './promotion/promotion.component';
 
 const routes: Routes = [
   { 
@@ -28,7 +29,11 @@ const routes: Routes = [
   },
   {
     path: 'profil', component: ProfilComponent
+  },
+  {
+    path: 'promotion', component: PromotionComponent
   }
+
 ];
 
 @NgModule({

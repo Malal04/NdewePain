@@ -1,1 +1,60 @@
-<p>login works!</p>
+<div class="login">
+    <div class="login-container">
+
+        <div class="login-left">
+            <div class="brand">
+                <img src="../../../assets/logo.png" alt="Logo Hôtel">
+                <h2>Ndewé Pain</h2>
+                <p>La fraîcheur, la chaleur et la tradition artisanale</p>
+            </div>
+            <p class="intro">
+                Vivez une expérience gourmande et savourez l’authenticité de notre boulangerie artisanale,
+                à deux pas de vos envies.
+            </p>            
+            <img src="../../../assets/login.png" alt="Illustration connexion" class="illustration">
+        </div>
+
+        <div class="login-right">
+            <div class="title">
+                <h2>Connexion à votre compte</h2>
+                <p>Veuillez entrer vos informations pour continuer</p>
+            </div>
+
+            <form class="group-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="input-group">
+                    <i class="fa fa-envelope"></i>
+                    <input type="email" placeholder="Adresse e-mail" required formControlName="email">
+                </div>
+                <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)" 
+                    class="auth__error">
+                    L'adresse e-mail est requise.
+                </div>
+
+                <div class="input-group">
+                    <i class="fa fa-lock"></i>
+                    <input type="password" placeholder="Mot de passe" required formControlName="password">
+                </div>
+                <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)" 
+                    class="auth__error">
+                    Le mot de passe est requis.
+                </div>
+
+                <div class="options">
+                    <label><input type="checkbox"> Se souvenir de moi</label>
+                    <a href="#">Mot de passe oublié ?</a>
+                </div>
+
+                <div class="group-button">
+                    <button type="submit" [disabled]="loginForm.invalid" class="btn">Se connecter</button>
+                </div>
+
+                <p class="signup">
+                    Vous n’avez pas de compte ? <a href="/auth/register">Créer un compte</a>
+                </p>
+            </form>
+            <div *ngIf="message" class="auth__error">
+                {{ message }}
+            </div>
+        </div>
+   </div>
+</div>
