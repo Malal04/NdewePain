@@ -1,0 +1,68 @@
+<div class="support-header">
+    <app-header></app-header>
+</div>
+
+<div class="support">
+  <main class="support-container">
+    <h1>Support Client</h1>
+    <p class="subtitle">Nous sommes là pour vous aider avec vos questions ou problèmes.</p>
+
+    <div class="support-grid">
+      
+      <!-- Historique -->
+      <div class="chat-history">
+        <h2>Historique des discussions</h2>
+        <ul>
+          <li>
+            <span class="icon">💬</span>
+            <div>
+              <strong>Commande #12345 - Problème de livraison</strong>
+              <p class="resolved">Résolu</p>
+            </div>
+          </li>
+          <li>
+            <span class="icon">💬</span>
+            <div>
+              <strong>Demande produit - Options sans gluten</strong>
+              <p class="resolved">Résolu</p>
+            </div>
+          </li>
+          <li>
+            <span class="icon">💬</span>
+            <div>
+              <strong>Question générale - Horaires du magasin</strong>
+              <p class="resolved">Résolu</p>
+            </div>
+          </li>
+        </ul>
+        <button type="button" class="btn-new" (click)="startNewChat()">➕ Nouvelle discussion</button>
+      </div>
+
+      <!-- Chat en direct -->
+      <div class="live-chat">
+        <h2>Chat en direct</h2>
+        <div class="chat-box">
+          <div *ngFor="let msg of messages" class="message" [ngClass]="msg.type">
+            <ng-container *ngIf="msg.type === 'agent'">
+              <img src="https://i.pravatar.cc/40?img=5" alt="Agent">
+              <p>{{ msg.text }}</p>
+            </ng-container>
+            <ng-container *ngIf="msg.type === 'client'">
+              <p>{{ msg.text }}</p>
+            </ng-container>
+          </div>
+        </div>
+
+        <!-- Input -->
+        <form class="chat-input" (ngSubmit)="sendMessage()">
+          <input type="text" [(ngModel)]="newMessage" name="message" placeholder="Écrivez votre message...">
+          <button type="submit" class="send-btn">➤</button>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="support-footer">
+    <app-footer></app-footer>
+</div>

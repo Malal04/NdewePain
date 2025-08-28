@@ -1,0 +1,113 @@
+<header class="header-menu">
+    <app-header></app-header>
+</header>
+<div class="checkout">
+  <main class="checkout-container">
+    <!-- Colonne gauche -->
+    <section class="order-summary">
+      <h1>Passer la commande</h1>
+      <h2>Résumé de votre commande</h2>
+
+      <!-- Produits -->
+      <div class="order-item">
+        <img src="../../../../assets/painBlog.png" alt="Pain au Levain">
+        <div class="item-info">
+          <h3>Pain au Levain</h3>
+          <p>Quantité : 2</p>
+          <small>Option : Croûte extra croustillante</small>
+        </div>
+        <div class="item-price">6 500 FCFA <br><span>3 250 FCFA / pièce</span></div>
+      </div>
+
+      <div class="order-item">
+        <img src="../../../../assets/painBlog.png" alt="Croissant">
+        <div class="item-info">
+          <h3>Croissant</h3>
+          <p>Quantité : 1</p>
+        </div>
+        <div class="item-price">1 500 FCFA</div>
+      </div>
+
+      <div class="order-item">
+        <img src="../../../../assets/painBlog.png" alt="Gâteau au Chocolat">
+        <div class="item-info">
+          <h3>Gâteau au Chocolat</h3>
+          <p>Quantité : 1</p>
+          <small>Option : Message « Joyeux Anniversaire ! »</small>
+        </div>
+        <div class="item-price">12 000 FCFA</div>
+      </div>
+
+      <!-- Livraison & Pickup -->
+      <h2>Livraison ou Retrait</h2>
+      <div class="delivery-options">
+        <label class="option selected">
+          <input type="radio" name="delivery" checked>
+          <div>
+            <h4>Livraison</h4>
+            <p>Recevez vos produits directement à domicile.</p>
+          </div>
+          <span class="price">2 000 FCFA</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="delivery">
+          <div>
+            <h4>Retrait en Boulangerie</h4>
+            <p>Récupérez votre commande sur place.</p>
+          </div>
+          <span class="price">Gratuit</span>
+        </label>
+      </div>
+
+      <!-- Créneau horaire -->
+      <h2>Choisissez un créneau</h2>
+      <select class="time-slot">
+        <option>Aujourd’hui, 14h00 - 15h00</option>
+        <option>Aujourd’hui, 16h00 - 17h00</option>
+        <option>Demain, 10h00 - 11h00</option>
+      </select>
+    </section>
+
+    <!-- Colonne droite -->
+    <aside class="checkout-summary">
+      <h2>Total</h2>
+      <div class="summary-row">
+        <span>Sous-total</span>
+        <span>20 000 FCFA</span>
+      </div>
+      <div class="summary-row">
+        <span>Livraison</span>
+        <span>2 000 FCFA</span>
+      </div>
+      <div class="summary-row discount">
+        <span>Réduction</span>
+        <span>- 1 500 FCFA</span>
+      </div>
+      <div class="summary-row total">
+        <span>Total à payer</span>
+        <span>20 500 FCFA</span>
+      </div>
+
+      <!-- Code promo -->
+      <div class="discount-code">
+        <input type="text" placeholder="Code promo">
+        <button type="submit">Appliquer</button>
+      </div>
+
+      <div class="pay"> 
+        <button type="submit" class="btn-pay" (click)="onSubmit()">Confirmer et Payer</button>
+      </div>
+
+      <!-- Loader (caché par défaut) -->
+        <div class="loader" id="payment-loader">
+            <div class="spinner"></div>
+            <p>Traitement du paiement...</p>
+        </div>
+  
+    </aside>
+  </main>
+</div>
+<footer class="footer-menu">
+    <app-footer></app-footer>
+</footer>

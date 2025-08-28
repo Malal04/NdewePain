@@ -1,91 +1,98 @@
-<main class="offers-container">
-
-  <!-- Hero -->
-  <section class="hero">
-    <img src="assets/img/hero.jpg" alt="Boulangerie artisanale">
-    <div class="hero-text">
-      <h1>Promotions & Événements</h1>
-    </div>
-  </section>
-
-  <!-- Promotions -->
-  <section class="promotions card">
-    <h2>Promotions</h2>
-    <div class="promo-item">
-      <div>
-        <h3>-20% sur toutes les pâtisseries</h3>
-        <p>Profitez de 20% de réduction ce week-end, du vendredi au dimanche inclus.</p>
-      </div>
-      <button class="btn">Commander</button>
-    </div>
-  </section>
-
-  <!-- Événements -->
-  <section class="events">
-    <h2>Événements à venir</h2>
-    <div class="events-grid">
-
-      <!-- Calendrier Dynamique -->
-      <div class="calendar card">
-        <div class="calendar-header">
-          <span>{{ monthName | titlecase }}</span>
+<header class="promotion-header">
+  <app-header></app-header>
+</header>
+<main class="offers">
+  <div class="offers-container">
+      <!-- Hero -->
+      <section class="hero">
+        <img src="../../../assets/painBlog.png" alt="Boulangerie artisanale">
+        <div class="hero-text">
+          <h1>Promotions & Événements</h1>
         </div>
-        <div class="calendar-grid">
-          <span *ngFor="let d of daysOfWeek">{{ d }}</span>
-          <span *ngFor="let day of daysInMonth" 
-                [class.today]="isToday(day)">
-            {{ day || '' }}
-          </span>
-        </div>
-      </div>
+      </section>
 
-      <!-- Liste des événements -->
-      <div class="event-list">
-        <div class="event card">
-          <img src="assets/img/mothersday.jpg" alt="Brunch fête des mères">
+      <!-- Promotions -->
+      <section class="promotions card">
+        <h2>Promotions</h2>
+        <div class="promo-item">
           <div>
-            <h3>Brunch de la Fête des Mères</h3>
-            <p>12 Mai, toutes nos boulangeries</p>
+            <h3>-20% sur toutes les pâtisseries</h3>
+            <p>Profitez de 20% de réduction ce week-end, du vendredi au dimanche inclus.</p>
+          </div>
+          <button class="btn">Commander</button>
+        </div>
+      </section>
+
+      <!-- Événements -->
+      <section class="events">
+        <h2>Événements à venir</h2>
+        <div class="events-grid">
+
+          <!-- Calendrier Dynamique -->
+          <div class="calendar card">
+            <div class="calendar-header">
+              <span>{{ monthName | titlecase }}</span>
+            </div>
+            <div class="calendar-grid">
+              <span *ngFor="let d of daysOfWeek">{{ d }}</span>
+              <span *ngFor="let day of daysInMonth" 
+                    [class.today]="isToday(day)">
+                {{ day || '' }}
+              </span>
+            </div>
+          </div>
+
+          <!-- Liste des événements -->
+          <div class="event-list">
+            <div class="event card">
+              <img src="../../../assets/Rectangle4.png" alt="Brunch fête des mères">
+              <div>
+                <h3>Brunch de la Fête des Mères</h3>
+                <p>12 Mai, toutes nos boulangeries</p>
+              </div>
+            </div>
+            <div class="event card">
+              <img src="../../../assets/Rectangle5.png" alt="Atelier pâtisserie">
+              <div>
+                <h3>Atelier Pâtisserie d’Été</h3>
+                <p>15 Juin, centre-ville</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="event card">
-          <img src="assets/img/workshop.jpg" alt="Atelier pâtisserie">
-          <div>
-            <h3>Atelier Pâtisserie d’Été</h3>
-            <p>15 Juin, centre-ville</p>
+      </section>
+
+      <!-- Offres limitées -->
+      <section class="limited-offers card">
+        <h2>Offre Limitée</h2>
+        <div class="limited-grid">
+          <div class="offer-details">
+            <h3>Spécial : 2 achetés = 1 offert</h3>
+            <p>Dépêchez-vous, l’offre se termine bientôt !</p>
+            <div class="countdown">
+              <div><span>02</span><small>Jours</small></div>
+              <div><span>14</span><small>Heures</small></div>
+              <div><span>30</span><small>Min</small></div>
+              <div><span>45</span><small>Sec</small></div>
+            </div>
+            <button type="submit" class="btn">Commander</button>
           </div>
+          <img src="../../../assets/Rectangle5.png" alt="Produits artisanaux">
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- Offres limitées -->
-  <section class="limited-offers card">
-    <h2>Offre Limitée</h2>
-    <div class="limited-grid">
-      <div class="offer-details">
-        <h3>Spécial : 2 achetés = 1 offert</h3>
-        <p>Dépêchez-vous, l’offre se termine bientôt !</p>
-        <div class="countdown">
-          <div><span>02</span><small>Jours</small></div>
-          <div><span>14</span><small>Heures</small></div>
-          <div><span>30</span><small>Min</small></div>
-          <div><span>45</span><small>Sec</small></div>
-        </div>
-        <button class="btn">Commander</button>
-      </div>
-      <img src="assets/img/bread.jpg" alt="Produits artisanaux">
-    </div>
-  </section>
-
-  <!-- Newsletter -->
-  <section class="newsletter card">
-    <h2>Restez informés</h2>
-    <p>Inscrivez-vous à notre newsletter pour recevoir nos promotions et événements exclusifs.</p>
-    <form class="newsletter-form">
-      <input type="email" placeholder="Votre adresse e-mail">
-      <button type="submit" class="btn">S’inscrire</button>
-    </form>
-  </section>
-
+      <!-- Newsletter -->
+      <section class="newsletter card">
+        <h2>Restez informés</h2>
+        <p>Inscrivez-vous à notre newsletter pour recevoir nos promotions et événements exclusifs.</p>
+        <form type="submit" class="newsletter-form">
+          <input type="email" placeholder="Votre adresse e-mail">
+          <button type="submit" class="btn">S’inscrire</button>
+        </form>
+      </section>
+  </div>
 </main>
+<footer class="promotion-footer">
+  <app-footer></app-footer>
+</footer>
+

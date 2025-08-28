@@ -1,0 +1,31 @@
+<div>
+  <app-header></app-header>
+</div>
+<div class="order">
+  <main class="tracking-container">
+    <h1>Suivi de commande</h1>
+    <p class="order-id">Commande #{{ orderId }}</p>
+
+    <div class="timeline">
+      <!-- Barre de progression -->
+      <div #progressLine class="progress-line"></div>
+
+      <div *ngFor="let step of steps" class="step" 
+           [class.completed]="step.completed" [class.pending]="!step.completed">
+        <div class="icon"><i class="fas" [ngClass]="step.icon"></i></div>
+        <div class="content">
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.date }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sy">
+      <button type="button" class="btn-support">Contacter le support</button>
+    </div>
+  </main>
+</div>
+<div>
+  <app-footer></app-footer>
+</div>
+

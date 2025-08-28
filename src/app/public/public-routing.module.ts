@@ -7,6 +7,9 @@ import { ConfidentialiteComponent } from './confidentialite/confidentialite.comp
 import { GalleryComponent } from './gallery/gallery.component';
 import { ProfilComponent } from './profil/profil.component';
 import { PromotionComponent } from './promotion/promotion.component';
+import { MenuComponent } from './menu/menu.component';
+import { DetailsComponent } from './details/details.component';
+import { SettingComponent } from '../_utils/setting/setting.component';
 
 const routes: Routes = [
   { 
@@ -32,7 +35,20 @@ const routes: Routes = [
   },
   {
     path: 'promotion', component: PromotionComponent
+  },
+  {
+    path: 'menu', component: MenuComponent
+  },
+  {
+    path: 'details', component: DetailsComponent
+  },
+  {
+    path: 'chechout', loadChildren: () => import('./pagnier/pagnier.module').then(m => m.PagnierModule)
+  },
+  {
+    path: 'setting', component: SettingComponent
   }
+
 
 ];
 

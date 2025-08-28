@@ -1,0 +1,84 @@
+<header class="header-menu">
+  <app-header></app-header>
+</header>
+<div class="details">
+  <!-- Fil d’Ariane -->
+  <nav class="breadcrumb">
+    <a href="#">Accueil</a> /
+    <a href="#">Gâteaux</a> /
+    <span>Gâteau Chocolat Gourmand</span>
+  </nav>
+
+  <div class="product-container">
+    <!-- Image principale -->
+    <div class="product-image">
+      <img src="../../../assets/painBlog.png" alt="Gâteau Chocolat Gourmand">
+    </div>
+
+    <!-- Détails -->
+    <div class="product-details">
+      <h1>Gâteau Chocolat Gourmand</h1>
+      <p class="description">
+        Un gâteau signature préparé avec du cacao de qualité supérieure et une touche d’espresso, 
+        offrant une expérience riche et fondante. 
+        Recouvert d’une ganache onctueuse au chocolat et de fruits frais, 
+        c’est la pièce maîtresse idéale pour vos moments de fête.
+      </p>
+
+      <!-- Allergènes -->
+      <h3>Informations Allergènes</h3>
+      <div class="allergens">
+        <span><i class="fa fa-exclamation-triangle"></i> Contient du Blé</span>
+        <span><i class="fa fa-exclamation-triangle"></i> Contient des Œufs</span>
+        <span><i class="fa fa-exclamation-triangle"></i> Contient du Lait</span>
+        <span><i class="fa fa-exclamation-triangle"></i> Contient du Soja</span>
+      </div>
+
+      <!-- Prix + CTA -->
+      <div class="purchase">
+        <div class="price">35 000 FCFA</div>
+        <div class="quantity">
+          <button type="submit">-</button>
+          <input type="text" value="1">
+          <button type="submit">+</button>
+        </div>
+      </div>
+
+      <button class="btn-add">Ajouter au Panier</button>
+    </div>
+  </div>
+
+  <!-- Produits recommandés -->
+  <section class="related">
+    <h2>Vous pourriez aussi aimer</h2>
+    <div class="related-grid">
+      <div class="card">
+        <img src="../../../assets/painBlog.png" alt="Gâteau Vanille Classique">
+        <h4>Gâteau Vanille Classique</h4>
+        <p>30 000 FCFA</p>
+        <button type="submit" routerLink="/details">Voir Détails</button>
+      </div>
+      <div class="card">
+        <img src="../../../assets/painBlog.png" alt="Gâteau Fraise Gourmande">
+        <h4>Gâteau Fraise Gourmande</h4>
+        <p>32 000 FCFA</p>
+        <button type="submit" routerLink="/details">Voir Détails</button>
+      </div>
+      <div class="card">
+        <img src="../../../assets/painBlog.png" alt="Gâteau Citron Zesté">
+        <h4>Gâteau Citron Zesté</h4>
+        <p>28 000 FCFA</p>
+        <button type="submit" routerLink="/details">Voir Détails</button>
+      </div>
+      <div class="card">
+        <img src="../../../assets/painBlog.png" alt="Red Velvet">
+        <h4>Red Velvet</h4>
+        <p>34 000 FCFA</p>
+        <button type="submit" routerLink="/details">Voir Détails</button>
+      </div>
+    </div>
+  </section>
+</div>
+<footer class="footer-menu">
+  <app-footer></app-footer>
+</footer>

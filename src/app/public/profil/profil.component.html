@@ -15,8 +15,8 @@
             </div>
           </div>
           <div class="actions">
-            <button class="btn update">Mettre à jour</button>
-            <button class="btn logout">Déconnexion</button>
+            <button type="submit" class="btn update" (click)="updateProfile()">Mettre à jour</button>
+            <button type="submit" class="btn logout">Déconnexion</button>
           </div>
         </section>
       
@@ -71,7 +71,9 @@
                 <strong>Bureau</strong>
                 <p>456 Boulevard Corporate, Bureau 200, Workville, WV 67890</p>
               </div>
-              <button class="btn-outline"><i class="ph ph-plus"></i> Ajouter une nouvelle adresse</button>
+              <button type="submit" class="btn-outline">
+                <i class="ph ph-plus"></i> Ajouter une nouvelle adresse
+              </button>
             </div>
       
             <!-- Préférences alimentaires -->
@@ -94,7 +96,9 @@
               <div class="payment">
                 <i class="ph ph-paypal-logo"></i> PayPal
               </div>
-              <button class="btn-outline"><i class="ph ph-plus"></i> Ajouter un mode de paiement</button>
+              <button type="submit" class="btn-outline">
+                <i class="ph ph-plus"></i> Ajouter un mode de paiement
+              </button>
             </div>
           </aside>
         </div>

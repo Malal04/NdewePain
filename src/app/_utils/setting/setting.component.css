@@ -1,0 +1,115 @@
+.setting {
+  padding-top: 20px;
+}
+
+.profile-container {
+  max-width: 620px;
+  margin: 60px auto;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  color: #d35400;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Carte profil */
+.profile-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  padding: 30px;
+  text-align: left;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+/* Avatar */
+.avatar-upload {
+  text-align: center;
+  margin-bottom: 25px;
+}
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 12px;
+  border: 3px solid #d35400;
+  object-fit: cover;
+}
+.avatar-upload input[type="file"] {
+  display: block;
+  margin: 10px auto;
+}
+.avatar-upload small {
+  color: #777;
+  font-size: 0.8rem;
+}
+
+/* Champs */
+label {
+  display: block;
+  margin-bottom: 18px;
+  font-weight: 500;
+  color: #444;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: border 0.3s ease;
+}
+input:focus {
+  border-color: #d35400;
+  outline: none;
+  box-shadow: 0 0 5px rgba(211,84,0,0.2);
+}
+
+/* Sécurité */
+h3 {
+  margin: 25px 0 12px;
+  font-size: 1.2rem;
+  color: #d35400;
+  font-weight: 600;
+}
+
+/* Bouton */
+.btn-save {
+  margin-top: 25px;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #d35400, #ff7043);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-save:hover {
+  box-shadow: 0 6px 16px rgba(211,84,0,0.35);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .profile-card {
+    padding: 20px;
+  }
+  h1 {
+    font-size: 1.6rem;
+  }
+}

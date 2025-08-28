@@ -1,12 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { HeaderComponent } from "../../_utils/header/header.component";
+import { FooterComponent } from "../../_utils/footer/footer.component";
 
 @Component({
   selector: 'app-promotion',
   standalone: true,
   imports: [
     CommonModule,
-  ],
+    HeaderComponent,
+    FooterComponent
+],
   templateUrl: './promotion.component.html',
   styleUrl: './promotion.component.css'
 })

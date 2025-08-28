@@ -1,0 +1,152 @@
+.order {
+  padding-top: 90px;
+}
+
+.tracking-container {
+  max-width: 650px;
+  margin: 50px auto;
+  padding: 25px;
+  text-align: center;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+  color: #d35400;
+  font-weight: 700;
+}
+
+.order-id {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 40px;
+  font-style: italic;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  position: relative;
+  margin-left: 50px;
+}
+
+/* Ligne grise */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: 3px;
+  height: 100%;
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+/* Barre de progression orange */
+.progress-line {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: 3px;
+  height: 0;
+  background: linear-gradient(180deg, #d35400, #ff7043);
+  border-radius: 4px;
+  z-index: 0;
+  transition: height 1s ease-in-out;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.step .icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.2rem;
+}
+
+.step .content {
+  text-align: left;
+}
+
+.step h3 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.step p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Statuts */
+.step.completed .icon {
+  background: #d35400;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(211,84,0,0.3);
+}
+.step.pending .icon {
+  background: #eee;
+  color: #999;
+}
+.step.completed h3 {
+  color: #222;
+}
+.step.pending h3, 
+.step.pending p {
+  color: #bbb;
+}
+
+.btn-support {
+  margin-top: 40px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #d35400, #ff7043);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-support:hover {
+  box-shadow: 0 6px 18px rgba(211,84,0,0.4);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .tracking-container {
+    padding: 15px;
+  }
+  .timeline {
+    margin-left: 35px;
+  }
+  .step {
+    gap: 12px;
+  }
+  .step .icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  .step .content h3 {
+    font-size: 0.95rem;
+  }
+  .step .content p {
+    font-size: 0.8rem;
+  }
+}

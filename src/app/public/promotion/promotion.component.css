@@ -6,6 +6,10 @@
   animation: fadeIn 1s ease both;
 }
 
+.offers {
+  padding-top: 90px;
+}
+
 /* Hero */
 .hero {
   position: relative;
