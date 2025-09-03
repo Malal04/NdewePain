@@ -1,0 +1,269 @@
+/* ===== Sidebar ===== */
+.sideB {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100%;
+}
+
+.brand {
+  font-size: 18px;
+  font-weight: bold;
+  height: 56px;
+  background: var(--brand);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  font-weight: 800;
+  display: flex;
+  position: sticky;
+  top: 0;
+  left: 0;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.sideBI { 
+  flex-grow: 1; 
+  overflow-y: auto; 
+  margin-top: 10px; 
+}
+
+.brand .bx {
+  min-width: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.sideM { 
+  border-top: 1px solid #ddd; 
+  padding-top: 10px; 
+}
+
+.side-menu {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu li {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.side-menu li:last-child {
+  margin-bottom: 0;
+}
+
+.side-menu li a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 100%;
+  background-color: #ecf0f1;
+  padding: 10px 16px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  transition: 0.3s;
+  border-radius: 6px;
+  color: #2c3e50;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.side-menu li a:hover, 
+.side-menu li a.active {
+  background: var(--brand); 
+  color: #fff;
+}
+
+.dropdown { 
+  display: none; 
+  list-style: none; 
+  padding-left: 20px; 
+}
+
+.side-menu li.open 
+.dropdown { 
+  display: block; 
+}
+
+.logout { 
+  color: #e74c3c !important; 
+}
+
+.logout:hover { 
+  background: #c0392b !important; 
+  color: #fff !important; 
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .brand {
+    font-size: 16px;
+    height: 45px;
+    padding-left: 12px;
+  }
+  
+  .side-menu li a {
+    padding: 8px 12px;
+    font-size: 13px;
+    gap: 8px;
+  }
+  
+  .fa-icon {
+    font-size: 16px;
+    min-width: 20px;
+  }
+  
+  .dropdown li a {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .brand {
+    font-size: 20px;
+    height: 56px;
+    padding-left: 20px;
+  }
+  
+  .side-menu li {
+    margin-bottom: 10px;
+  }
+  
+  .side-menu li a {
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+  
+  .i {
+    font-size: 20px;
+    min-width: 28px;
+  }
+  
+  .dropdown li a {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .brand {
+    font-size: 22px;
+  }
+  
+  .side-menu li {
+    margin-bottom: 12px;
+  }
+  
+  .side-menu li a {
+    font-size: 16px;
+  }
+  
+  .i {
+    font-size: 22px;
+    min-width: 30px;
+  }
+  
+  .dropdown li a {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .brand {
+    font-size: 25px;
+  }
+}
+
+@media (min-width: 768px) {
+  .sidebar.collapsed .side-menu li a .text {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .sidebar.collapsed .side-menu li a {
+    justify-content: center;
+    gap: 0;
+  }
+  
+  .sidebar.collapsed .dropdown {
+    display: none !important;
+  }
+  
+  .sidebar.collapsed .dropdown-icon {
+    display: none;
+  }
+  
+  .sidebar.collapsed .brand .text {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .side-menu li a {
+    padding: 12px 16px;
+    min-height: 44px;
+  }
+  
+  .side-menu li a:hover {
+    background-color: var(--brand);
+    color: #2c3e50;
+  }
+  
+  .side-menu li a:active {
+    background-color: var(--brand);
+    color: #fff;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .side-menu li a {
+    border: 1px solid #ccc;
+  }
+  
+  .side-menu li a:hover,
+  .side-menu li a:focus {
+    border: 2px solid #3498db;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  .side-menu li a,
+  .dropdown-icon,
+  .dropdown {
+    transition: none;
+  }
+  
+  @keyframes fadeIn {
+    from, to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+} 

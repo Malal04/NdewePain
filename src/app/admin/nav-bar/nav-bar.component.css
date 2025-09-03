@@ -1,0 +1,114 @@
+/* ===== Navbar ===== */
+nav {
+  height: 56px;
+  background: var(--brand);
+  padding: 0 var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-wr { 
+  display: flex; 
+  align-items: center; 
+  width: 100%; 
+  justify-content: space-between; 
+}
+
+.nav-wrapper {
+  cursor: pointer; 
+  display: flex; 
+  align-items: center; 
+}
+
+.nav-wrapper i { 
+  font-size: 20px; 
+  color: #fff; 
+  padding: 8px; 
+  transition: .3s; 
+}
+
+.nav-wrapper i:hover { 
+  color: #eee; 
+}
+
+.nav-links { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+}
+
+nav .profile img {
+  width: 32px; 
+  height: 32px; 
+  border-radius: 50%;
+  border: 2px solid #fff;
+  object-fit: cover;
+  transition: border .3s;
+}
+
+nav .profile img:hover { 
+  border-color: var(--brand-dark); 
+}
+
+@media (max-width: 480px) {
+  nav {
+    height: 50px;
+    padding: 0 var(--space-sm);
+  }
+  
+  .nav-wrapper fa-icon {
+    font-size: 18px;
+    padding: 6px;
+  }
+  
+  .nav-links {
+    gap: 8px;
+  }
+  
+  nav .profile img {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (min-width: 768px) {
+  nav {
+    padding: 0 var(--space-lg);
+  }
+  
+  .nav-wrapper fa-icon {
+    font-size: 25px;
+  }
+  
+  .nav-links {
+    gap: 20px;
+  }
+  
+  nav .profile img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  nav {
+    padding: 0 var(--space-xl);
+  }
+}
+
+@media (min-width: 768px) {
+  .nav-wrapper {
+    display: block;
+  }
+}
+
+@media (max-width: 767px) {
+  .nav-wrapper {
+    display: flex;
+  }
+} 

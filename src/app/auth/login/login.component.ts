@@ -51,9 +51,9 @@ export class LoginComponent {
             this.tokenService.setRole(response.role);
           }
           if (response.role === Role.ADMIN) {
-            this.router.navigate(['admin']);
-          } else if (response.role === Role.CUSTOMER) {
-            this.router.navigate(['user']);
+            this.router.navigate(['dashboard']);
+          } else if (response.role === Role.CLIENT) {
+            this.router.navigate(['/']);
           }
           
         },

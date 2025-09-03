@@ -1,0 +1,15 @@
+<nav>
+  <div class="nav-wr">
+    <!-- Hamburger menu -->
+    <div class="nav-wrapper">
+      <i class="fa fa-bars" (click)="toggleMenu()"></i>
+    </div>
+
+    <!-- Logo -->
+    <div class="nav-links" *ngIf="isAdmin">
+      <a class="profile" routerLink="/admin" routerLinkActive="active">
+        <img src="../../../assets/logo.png" alt="logo ndewepain" title="logo ndewepain"/>
+      </a>
+    </div>
+  </div>
+</nav>

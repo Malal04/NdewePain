@@ -44,19 +44,16 @@
         <!-- Téléphone -->
         <div class="input-group">
           <i class="fa fa-phone"></i>
-          <input type="text" placeholder="Téléphone (+221...)" formControlName="telephone" required>
+          <input type="text" placeholder="Téléphone (+221...)" formControlName="phone" required>
         </div>
-        <div *ngIf="registerForm.get('telephone')?.invalid && (registerForm.get('telephone')?.touched || registerForm.get('telephone')?.dirty)" class="auth__error">
+        <div *ngIf="registerForm.get('phone')?.invalid && (registerForm.get('phone')?.touched || registerForm.get('phone')?.dirty)" class="auth__error">
           Le numéro de téléphone est requis.
         </div>
 
-        <!-- Adresse -->
+        <!-- Profil -->
         <div class="input-group">
-          <i class="fa fa-map-marker"></i>
-          <input type="text" placeholder="Adresse complète" formControlName="adresse" required>
-        </div>
-        <div *ngIf="registerForm.get('adresse')?.invalid && (registerForm.get('adresse')?.touched || registerForm.get('adresse')?.dirty)" class="auth__error">
-          L’adresse est requise.
+          <i class="fa fa-image"></i>
+          <input type="file" (change)="onFileSelected($event)" accept="image/*">
         </div>
 
         <!-- Mot de passe -->
