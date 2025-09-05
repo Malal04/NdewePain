@@ -1,0 +1,31 @@
+<div class="form-container">
+    <h2>Ajouter une Catégorie</h2>
+
+    <!-- Message succès / erreur -->
+    <p class="message" *ngIf="message">{{ message }}</p>
+
+    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+
+        <!-- Nom -->
+        <div class="form-field">
+            <label for="nom">Nom <span class="required">*</span></label>
+            <input id="nom" type="text" formControlName="nom" placeholder="Ex. Viennoiseries">
+            <div class="error" *ngIf="categoryForm.get('nom')?.invalid && categoryForm.get('nom')?.touched">
+                Le nom est obligatoire et ne doit pas dépasser 255 caractères.
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="form-field">
+            <label for="description">Description</label>
+            <textarea id="description" rows="3" formControlName="description" placeholder="Ajoutez une description de la catégorie..."></textarea>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions">
+            <button type="submit" [disabled]="categoryForm.invalid" class="btn-primary">Enregistrer</button>
+            <button type="button" (click)="onCancel()" class="btn-secondary">Annuler</button>
+        </div>
+        
+    </form>
+</div>

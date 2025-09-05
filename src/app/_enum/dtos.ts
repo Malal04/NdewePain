@@ -11,3 +11,9 @@ export enum AccountState {
     ACTIVED = 'actived',
     BLOCKED = 'blocked'
 }
+
+export enum Status {
+    ACTIVE = 'active',
+    INACTIVE = 'inactive'
+}
+

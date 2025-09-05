@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ApiResponse, Envi } from '../_interface/envi';
+import { Envi, PaginatedResponse } from '../_interface/envi';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Supplier, SupplierDto } from '../_interface/supplier';
@@ -13,24 +13,26 @@ export class SupplierService {
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<Supplier[]> {
-    return this.http.get<Supplier[]>(this.url);
+  getAll(): Observable<PaginatedResponse<Supplier>> {
+    return this.http.get<PaginatedResponse<Supplier>>(this.url);
   }
 
   create(dto: SupplierDto): Observable<Supplier> {
     return this.http.post<Supplier>(this.url, dto);
   }
 
-  pagination(params?: any): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(`${this.url}/pagination`, { params });
+  pagination(page: number = 1): Observable<PaginatedResponse<Supplier>> {
+    return this.http.get<PaginatedResponse<Supplier>>(`${this.url}/pagination`, {
+      params: { page: page.toString() } 
+    });
   }
 
-  search(query: string): Observable<Supplier[]> {
-    return this.http.get<Supplier[]>(`${this.url}/search?query=${query}`);
+  search(query: string): Observable<PaginatedResponse<Supplier>> {
+    return this.http.get<PaginatedResponse<Supplier>>(`${this.url}/search?query=${query}`);
   }
 
-  getById(id: number): Observable<Supplier> {
-    return this.http.get<Supplier>(`${this.url}/${id}`);
+  getById(id: number): Observable<PaginatedResponse<Supplier>> {
+    return this.http.get<PaginatedResponse<Supplier>>(`${this.url}/${id}`);
   }
 
   update(id: number, dto: SupplierDto): Observable<Supplier> {

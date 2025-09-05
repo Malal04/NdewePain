@@ -3,6 +3,11 @@ export const Envi = {
     Url: 'http://127.0.0.1:8000/api/v1'
 };
 
+export const environment = {
+    production: false,
+    Url: `http://127.0.0.1:8000/storage`
+};
+
 export interface PaginationMeta {
     current_page: number;
     last_page: number;
@@ -15,4 +20,11 @@ export interface ApiResponse<T = any> {
     message: string;
     data?: T;
     meta?: PaginationMeta;
+}
+
+export interface PaginatedResponse<T> {
+    status: boolean;
+    message: string;
+    data: T[];
+    meta: PaginationMeta;
 }

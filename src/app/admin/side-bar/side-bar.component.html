@@ -1,6 +1,6 @@
 <!-- Sidebar -->
 <div class="sideB">
-    <a routerLink="/admin" routerLinkActive="active" class="brand" (click)="onItemClick()">
+    <a routerLink="/dashboard" routerLinkActive="active" class="brand" (click)="onItemClick()">
         <span class="text">
             NDEWEPAIN
         </span>
@@ -8,7 +8,7 @@
    <div class="sideBI">
         <ul class="side-menu top">
             <li class="active">
-                <a routerLink="/admin" routerLinkActive="active" (click)="onItemClick()">
+                <a routerLink="/dashboard" routerLinkActive="active" (click)="onItemClick()">
                     <i class="fa fa-dashboard"></i>
                     <span class="text">Dashboard</span>
                 </a>
@@ -16,33 +16,48 @@
 
             <li class="dropdown-container">
                 <a (click)="toggleDropdown($event)">
-                    <i class="fa fa-user"></i>
-                    <span class="text">Clients</span>
+                    <i class="fa fa-cart-plus"></i>
+                    <span class="text">Produits</span>
                     <i class="fa fa-angle-down dropdown-icon"></i>
                 </a>
                 <ul class="dropdown">
                     <li>
-                        <a routerLink="/admin/clients" routerLinkActive="active" (click)="onItemClick()">
-                            <i class="fa fa-user"></i>
-                            <span>Liste des clients</span>
+                        <a routerLink="/dashboard/index-produit" routerLinkActive="active" (click)="onItemClick()">
+                            <i class="fa fa-cart-plus"></i>
+                            <span>Liste des produits</span>
                         </a>
                     </li>
-                    <li *ngIf="canManageUsers">
-                        <a routerLink="/admin/clients/add" routerLinkActive="active" (click)="onItemClick()">
-                            <i class="fa fa-user-plus"></i>
-                            <span>Ajouter un client</span>
+                    <li>
+                        <a routerLink="/dashboard/index-categorie" routerLinkActive="active" (click)="onItemClick()">
+                            <i class="fa fa-th-list"></i>
+                            <span>Liste des catégories</span>
                         </a>
                     </li>
                 </ul>
             </li>
-
+            
+            <li class="dropdown-container">
+                <a (click)="toggleDropdown($event)">
+                    <i class="fa fa-truck"></i>
+                    <span class="text">Inventaire</span>
+                    <i class="fa fa-angle-down dropdown-icon"></i>
+                </a>
+                <ul class="dropdown">
+                    <li>
+                        <a routerLink="/dashboard/index-ingredient" routerLinkActive="active" (click)="onItemClick()">
+                            <i class="fa fa-truck"></i>
+                            <span>Liste des IG & FN</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
    
         </ul>
    </div>
 
    <div class="sideM">
         <ul class="side-menu">
-            <li class="dropdown-container" *ngIf="canManageUsers">
+            <li class="dropdown-container">
                 <a (click)="toggleDropdown($event)">
                     <i class="fa fa-user"></i>
                     <span class="text">Utilisateurs</span>
@@ -50,13 +65,13 @@
                 </a>
                 <ul class="dropdown">
                     <li>
-                        <a routerLink="/admin/utilisateurs" routerLinkActive="active" (click)="onItemClick()">
+                        <a routerLink="/dashboard/utilisateurs" routerLinkActive="active" (click)="onItemClick()">
                             <i class="fa fa-user"></i>
                             <span>Listes utilisateurs</span>
                         </a>
                     </li>
                     <li>
-                        <a routerLink="/admin/utilisateurs/add" routerLinkActive="active" (click)="onItemClick()">
+                        <a routerLink="/dashboard/utilisateurs/add" routerLinkActive="active" (click)="onItemClick()">
                             <i class="fa fa-user-plus"></i>
                             <span>Nouveau utilisateur</span>
                         </a>
@@ -65,7 +80,7 @@
             </li> 
 
             <li>
-                <a routerLink="/admin/profile" routerLinkActive="active" (click)="onItemClick()">
+                <a routerLink="/dashboard/profile" routerLinkActive="active" (click)="onItemClick()">
                     <i class="fa fa-user"></i>
                     <span class="text">Profile</span>
                 </a>

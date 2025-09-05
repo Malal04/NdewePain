@@ -1,0 +1,71 @@
+<main class="categorie-container">
+    <header class="header">
+        <div>
+            <h1>Gestion des Catégories</h1>
+            <p>Gérez facilement le catalogue de votre boulangerie.</p>
+        </div>
+        <button type="button" class="btn-ajout" (click)="addCategory()">
+            <i class="fa fa-plus"></i>
+            Nouvelle catégorie
+        </button>
+    </header>
+
+    <!-- Barre de recherche -->
+    <div class="search-bar">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher une catégorie..." />
+        <button type="button" (click)="searchCategories()">Rechercher</button>
+    </div>
+
+    <!-- Tableau des produits -->
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Slug</th>
+                    <th>Description</th>
+                    <th>Statut</th>
+                    <th class="actions">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let category of categories">
+                    <td class="product-info">
+                        {{ category.nom }}
+                    </td>
+                    <td>
+                        {{category.slug}}
+                    </td>
+                    <td>
+                        {{ category.description || 'Aucune description' }}
+                    </td>
+                    <td>
+                        <span class="badge" [ngClass]="category.status === 'active' ? 'active' : 'inactive'"
+                            (click)="toggleStatus(category.id)"
+                        >
+                            ● {{ category.status === 'active' ? 'Actif' : 'Inactif' }}
+                        </span>
+                    </td>
+                    <td class="actions">
+
+                        <a class="edit-link" (click)="editCategory(category.id)">
+                          <i class="fa fa-pencil"></i>
+                        </a>
+              
+                        <a class="delete-link" (click)="deleteCategory(category.id)">
+                          <i class="fa fa-trash"></i>
+                        </a>
+            
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <button type="button" (click)="prevPage()" [disabled]="currentPage === 1">Précédent</button>
+            <span>{{ currentPage }} / {{ totalPages }}</span>
+            <button type="button" (click)="nextPage()" [disabled]="currentPage === totalPages">Suivant</button>
+        </div>
+
+    </div>
+</main>

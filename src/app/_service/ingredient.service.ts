@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ApiResponse, Envi } from '../_interface/envi';
+import { ApiResponse, Envi, PaginatedResponse } from '../_interface/envi';
 import { HttpClient } from '@angular/common/http';
 import { Ingredient, IngredientDto } from '../_interface/ingredient';
 import { Observable } from 'rxjs';
@@ -13,24 +13,26 @@ export class IngredientService {
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<Ingredient[]> {
-    return this.http.get<Ingredient[]>(this.url);
+  getAll(): Observable<PaginatedResponse<Ingredient>> {
+    return this.http.get<PaginatedResponse<Ingredient>>(this.url);
   }
 
   create(dto: IngredientDto): Observable<Ingredient> {
     return this.http.post<Ingredient>(this.url, dto);
   }
 
-  pagination(params?: any): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(`${this.url}/pagination`, { params });
+  pagination( page: number = 1): Observable<PaginatedResponse<Ingredient>> {
+    return this.http.get<PaginatedResponse<Ingredient>>(`${this.url}/pagination`, {
+      params: { page: page.toString() } 
+    });
   }
 
-  search(query: string): Observable<Ingredient[]> {
-    return this.http.get<Ingredient[]>(`${this.url}/search?query=${query}`);
+  search(query: string): Observable<PaginatedResponse<Ingredient>> {
+    return this.http.get<PaginatedResponse<Ingredient>>(`${this.url}/search?query=${query}`);
   }
 
-  getById(id: number): Observable<Ingredient> {
-    return this.http.get<Ingredient>(`${this.url}/${id}`);
+  getById(id: number): Observable<PaginatedResponse<Ingredient>> {
+    return this.http.get<PaginatedResponse<Ingredient>>(`${this.url}/${id}`);
   }
 
   update(id: number, dto: IngredientDto): Observable<Ingredient> {

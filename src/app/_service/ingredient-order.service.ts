@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Envi } from '../_interface/envi';
+import { Envi, PaginatedResponse } from '../_interface/envi';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiResponse } from '../_interface/envi';
@@ -22,16 +22,18 @@ export class IngredientOrderService {
     return this.http.post<IngredientOrder>(this.url, dto);
   }
 
-  pagination(params?: any): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(`${this.url}/pagination`, { params });
+  pagination(page: number = 1): Observable<PaginatedResponse<IngredientOrder>> {
+    return this.http.get<PaginatedResponse<IngredientOrder>>(`${this.url}/pagination`, {
+      params: { page: page.toString() } 
+    });
   }
 
   search(query: string): Observable<IngredientOrder[]> {
     return this.http.get<IngredientOrder[]>(`${this.url}/search?query=${query}`);
   }
 
-  getById(id: number): Observable<IngredientOrder> {
-    return this.http.get<IngredientOrder>(`${this.url}/${id}`);
+  getById(id: number): Observable<PaginatedResponse<IngredientOrder>> {
+    return this.http.get<PaginatedResponse<IngredientOrder>>(`${this.url}/${id}`);
   }
 
   update(id: number, dto: IngredientOrderDto): Observable<IngredientOrder> {

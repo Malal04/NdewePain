@@ -1,0 +1,289 @@
+.categorie-container {
+  max-width: 97%;
+  margin: 40px auto;
+  padding: 20px;
+  color: #2c3e50;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.header h1 {
+  font-size: 1.9rem;
+  color: #d35400;
+}
+
+.header p {
+  color: #777;
+  margin-top: 4px;
+  font-size: 0.95rem;
+}
+
+.btn-ajout {
+  background: #d35400;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 25px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: 0.3s;
+}
+
+.btn-ajout i {
+  margin-right: 6px;
+}
+
+.btn-ajout:hover {
+  background: #b84300;
+  transform: translateY(-2px);
+}
+
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 12px 18px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  background: #fafafa;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.search-bar input:focus {
+  border-color: #d35400;
+  box-shadow: 0 0 6px rgba(211, 84, 0, 0.2);
+}
+
+.table-wrapper {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  overflow-x: auto;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+thead {
+  background: #fdf2e9;
+}
+
+thead th {
+  padding: 16px;
+  text-align: left;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+tbody tr {
+  border-bottom: 1px solid #f1f1f1;
+  transition: background 0.2s;
+}
+
+tbody tr:hover {
+  background: #fdf6ef;
+}
+
+td {
+  padding: 14px 16px;
+  vertical-align: middle;
+  font-size: 0.95rem;
+}
+
+.product-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.product-info img {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #eee;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.badge.active {
+  background: #eafaf1;
+  color: #0b9b43;
+  border: 1px solid #0b9b43;
+}
+
+.badge.inactive {
+  background: #fff0f0;
+  color: #d32f2f;
+  border: 1px solid #d32f2f;
+}
+
+/* Colonne actions */
+td.actions {
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Modifier */
+.edit-link {
+  background: #fdf2e9;
+  color: #d35400;
+  border: 1px solid #d35400;
+}
+
+.edit-link:hover {
+  background: #d35400;
+  color: #fff;
+}
+
+/* Supprimer */
+.delete-link {
+  background: #fff0f0;
+  color: #d32f2f;
+  border: 1px solid #d32f2f;
+}
+
+.delete-link:hover {
+  background: #d32f2f;
+  color: #fff;
+}
+
+/* Détails */
+.details-link {
+  background: #eaf2ff;
+  color: #0b63ce;
+  border: 1px solid #0b63ce;
+}
+
+.details-link:hover {
+  background: #0b63ce;
+  color: #fff;
+}
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+}
+
+.search-bar input {
+  flex: 1;
+}
+
+.search-bar button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  background: #d35400;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search-bar button:hover {
+  background: #b84300;
+  transform: translateY(-2px);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 0;
+}
+
+.pagination button {
+  background: #fdf2e9;
+  border: 1px solid #d35400;
+  color: #d35400;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #d35400;
+  color: #fff;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-size: 0.95rem;
+  color: #333;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .search-bar {
+    flex-direction: column;
+  }
+
+  .search-bar button {
+    width: 100%;
+  }
+
+  .pagination {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .pagination button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .btn-ajout {
+    width: 100%;
+  }
+}

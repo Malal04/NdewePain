@@ -1,3 +1,4 @@
+import { StatutIngredient } from "../_enum/inventory";
 import { Supplier } from "./supplier";
 
 export interface Ingredient {
@@ -6,7 +7,7 @@ export interface Ingredient {
     quantite: string;
     seuil_reappro: number;
     supplier: Supplier;
-    statut: string;
+    statut: StatutIngredient;
     created_at: Date;
 }
 
@@ -15,5 +16,5 @@ export interface IngredientDto {
     nom: string;
     quantite: string;
     seuil_reappro: number;
-    statut: string;
+    statut: StatutIngredient;
 }

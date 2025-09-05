@@ -1,0 +1,242 @@
+/* ===== Container ===== */
+.ingredient-container {
+  max-width: 1150px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ===== Header ===== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.header h1 {
+  font-size: 2rem;
+  color: #d35400;
+}
+.header p {
+  color: #777;
+  margin-top: 4px;
+  font-size: 0.95rem;
+}
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.btn-primary, .btn-secondary {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-primary {
+  background: #d35400;
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #b84300;
+  transform: translateY(-2px);
+}
+.btn-secondary {
+  background: #f4f4f4;
+  color: #444;
+}
+.btn-secondary:hover {
+  background: #ddd;
+}
+
+/* ===== Cards ===== */
+.card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 25px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+  animation: fadeIn 0.6s ease-in-out;
+}
+.card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* ===== Table ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+thead {
+  background: #fdf2e9;
+}
+thead th {
+  padding: 14px;
+  text-align: left;
+  font-size: 0.95rem;
+  color: #333;
+}
+tbody tr {
+  border-bottom: 1px solid #f1f1f1;
+  transition: background 0.3s;
+}
+tbody tr:hover {
+  background: #fff8f3;
+}
+td {
+  padding: 12px 14px;
+  vertical-align: middle;
+  font-size: 0.95rem;
+}
+.actions-col {
+  text-align: center;
+}
+
+/* ===== Statuts ===== */
+.statut-actif {
+  color: #2e7d32;
+  font-weight: 600;
+}
+.statut-inactif {
+  color: #d32f2f;
+  font-weight: 600;
+}
+
+/* ===== Actions ===== */
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.actions a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.edit-link {
+  background: #fdf2e9;
+  color: #d35400;
+  border: 1px solid #d35400;
+}
+.edit-link:hover {
+  background: #d35400;
+  color: #fff;
+}
+.delete-link {
+  background: #fff0f0;
+  color: #d32f2f;
+  border: 1px solid #d32f2f;
+}
+.delete-link:hover {
+  background: #d32f2f;
+  color: #fff;
+}
+.details-link {
+  background: #eaf2ff;
+  color: #0b63ce;
+  border: 1px solid #0b63ce;
+}
+.details-link:hover {
+  background: #0b63ce;
+  color: #fff;
+}
+
+/* ===== Search Bar ===== */
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.search-bar input, .search-bar select {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+.search-bar button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  background: #d35400;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.search-bar button:hover {
+  background: #b84300;
+  transform: translateY(-2px);
+}
+
+/* ===== Pagination ===== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 0;
+}
+.pagination button {
+  background: #fdf2e9;
+  border: 1px solid #d35400;
+  color: #d35400;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.pagination button:hover:not(:disabled) {
+  background: #d35400;
+  color: #fff;
+}
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.pagination span {
+  font-size: 0.95rem;
+  color: #333;
+  font-weight: 500;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .search-bar {
+    flex-direction: column;
+  }
+  .search-bar button {
+    width: 100%;
+  }
+  .pagination {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pagination button {
+    width: 100%;
+  }
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

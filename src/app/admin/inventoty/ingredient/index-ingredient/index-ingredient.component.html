@@ -1,0 +1,121 @@
+<main class="ingredient-container">
+  <!-- Header -->
+  <header class="header">
+    <div>
+      <h1> Gestion des Ingrédients & Fournisseurs</h1>
+      <p>Suivez vos stocks et vos partenaires facilement.</p>
+    </div>
+    <div class="actions">
+      <button type="button" class="btn-secondary" (click)="addSupplier()">
+        <i class="fa fa-truck"></i> Fournisseur
+      </button>
+      <button type="button" class="btn-primary" (click)="addIngredient()">
+        <i class="fa fa-plus-circle"></i> Ingrédient
+      </button>
+    </div>
+  </header>
+
+  <!-- Barre de recherche -->
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher..." />
+    <select [(ngModel)]="searchType">
+      <option value="ingredients">Ingrédients</option>
+      <option value="suppliers">Fournisseurs</option>
+    </select>
+    <button type="button" (click)="onSearch()">
+      Rechercher
+    </button>
+  </div>  
+
+  <!-- Tableau des ingrédients -->
+  <section class="card">
+    <h2> Ingrédients</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Quantité</th>
+          <th>Seuil</th>
+          <th>Fournisseur</th>
+          <th>Statut</th>
+          <th class="actions-col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ing of ingredients">
+          <td>{{ ing.nom }}</td>
+          <td>{{ ing.quantite }}</td>
+          <td>{{ ing.seuil_reappro }}</td>
+          <td>{{ ing.supplier.nom }}</td>
+          <td>
+            <span [ngClass]="{'statut-actif': ing.statut === 'ok', 'statut-inactif': ing.statut !== 'ok'}">
+              {{ ing.statut }}
+            </span>
+          </td>
+          <td class="actions">
+            <a class="edit-link" title="Modifier" (click)="editIngredient(ing.id)">
+              <i class="fa fa-pencil"></i>
+            </a>
+            <a class="delete-link" title="Supprimer" (click)="deleteIngredient(ing.id)">
+              <i class="fa fa-trash"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Pagination ingrédients -->
+    <div class="pagination">
+      <button type="button" (click)="prevPageIngredient()" [disabled]="currentPageIngredients === 1">
+        Précédent
+      </button>
+      <span>Page {{ currentPageIngredients }} / {{ totalPagesIngredients }}</span>
+      <button type="button" (click)="nextPageIngredient()" [disabled]="currentPageIngredients === totalPagesIngredients">
+        Suivant
+      </button>
+    </div>
+  </section>
+
+  <!-- Tableau des fournisseurs -->
+  <section class="card">
+    <h2>Fournisseurs</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Contact</th>
+          <th>Email</th>
+          <th>Téléphone</th>
+          <th class="actions-col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sup of suppliers">
+          <td>{{ sup.nom }}</td>
+          <td>{{ sup.contact_person }}</td>
+          <td><a [href]="'mailto:' + sup.email">{{ sup.email }}</a></td>
+          <td>{{ sup.telephone }}</td>
+          <td class="actions">
+            <a class="edit-link" title="Modifier" (click)="editSupplier(sup.id)">
+              <i class="fa fa-pencil"></i>
+            </a>
+            <a class="delete-link" title="Supprimer" (click)="deleteSupplier(sup.id)">
+              <i class="fa fa-trash"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Pagination fournisseurs -->
+    <div class="pagination">
+      <button type="button" (click)="prevPageSupplier()" [disabled]="currentPageSuppliers === 1">
+        Précédent
+      </button>
+      <span>Page {{ currentPageSuppliers }} / {{ totalPagesSuppliers }}</span>
+      <button type="button" (click)="nextPageSupplier()" [disabled]="currentPageSuppliers === totalPagesSuppliers">
+        Suivant
+      </button>
+    </div>
+  </section>
+</main>

@@ -1,3 +1,4 @@
+import { Status } from "../_enum/dtos";
 import { Category } from "./category";
 
 export interface Produit {
@@ -9,7 +10,7 @@ export interface Produit {
     photo_url: string;
     stock: number;
     allergenes: string[];
-    status: string;
+    status: Status;
     categorie: Category;
     created_at: Date;
 }
@@ -23,5 +24,5 @@ export interface ProduitDto {
     photo_url: string;
     stock: number;
     allergenes: string[];
-    status: string; 
+    status: Status; 
 }

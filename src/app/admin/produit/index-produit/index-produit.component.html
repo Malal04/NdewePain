@@ -1,0 +1,80 @@
+<main class="produit-container">
+  <header class="header">
+    <div>
+      <h1>Gestion des Produits</h1>
+      <p>Gérez facilement le catalogue de votre boulangerie.</p>
+    </div>
+    <button type="button" class="btn-ajout" (click)="addProduit()">
+      <i class="fa fa-plus"></i>
+      Nouveau produit
+    </button>
+  </header>
+
+  <!-- Barre de recherche -->
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher un produit..." />
+    <button type="button" (click)="searchProduits()">Rechercher</button>
+  </div>
+
+  <!-- Tableau des produits -->
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Categorie</th>
+          <th>Stock</th>
+          <th>Prix</th>
+          <th>Statut</th>
+          <th class="actions">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produit of produits">
+          <td class="product-info">
+            <img [src]="produit.photo_url || 'https://via.placeholder.com/50'" alt="Produit">
+            {{ produit.nom }}
+          </td>
+          <td> 
+            {{produit.categorie.nom}}
+          </td>
+          <td> 
+            {{produit.stock}}
+          </td>
+          <td>
+            {{ produit.prix_unitaire }} FCFA
+          </td>
+          <td>
+            <span class="badge" [ngClass]="produit.status === 'active' ? 'active' : 'inactive'" 
+              (click)="toggleStatus(produit.id)" 
+            >
+              ● {{ produit.status === 'active' ? 'Actif' : 'Inactif' }}
+            </span>
+          </td>
+          <td class="actions">
+
+            <a class="edit-link" (click)="editProduit(produit.id)">
+              <i class="fa fa-pencil"></i>
+            </a>
+  
+            <a class="delete-link" (click)="deleteProduit(produit.id)">
+              <i class="fa fa-trash"></i>
+            </a>
+          
+            <a class="details-link" (click)="viewProduitDetails(produit.id)">
+              <i class="fa fa-info-circle"></i>
+            </a>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      <button type="button" (click)="prevPage()" [disabled]="currentPage === 1">Précédent</button>
+      <span>{{ currentPage }} / {{ totalPages }}</span>
+      <button type="button" (click)="nextPage()" [disabled]="currentPage === totalPages">Suivant</button>
+    </div>
+
+  </div>
+</main>
