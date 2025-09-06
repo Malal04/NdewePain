@@ -1,0 +1,147 @@
+/* Container principal */
+.stock-history-container {
+  max-width: 1100px; /* un peu plus large pour accueillir le bouton */
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", Roboto, sans-serif;
+  color: #333;
+}
+
+/* En-tête */
+.header {
+  display: flex;               /* alignement horizontal */
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;             /* responsive sur petits écrans */
+}
+
+.header h2 {
+  font-size: 22px;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.header p {
+  color: #7f8c8d;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Boutons */
+.actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn.btn-secondary {
+  background: #ecf0f1;
+  color: #2c3e50;
+  border: 1px solid #bdc3c7;
+}
+
+.btn.btn-secondary:hover {
+  background: #dfe6e9;
+}
+
+/* Messages */
+.message {
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.message.error {
+  background: #fdecea;
+  color: #e74c3c;
+  border: 1px solid #e74c3c;
+}
+
+.empty {
+  text-align: center;
+  color: #7f8c8d;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+/* Table */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+thead {
+  background: #f7f9fa;
+}
+
+thead th {
+  text-align: left;
+  padding: 12px 15px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2c3e50;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+tbody tr {
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s;
+}
+
+tbody tr:hover {
+  background: #f9fbfc;
+}
+
+td {
+  padding: 12px 15px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.badge-entree {
+  background: #eafaf1;
+  color: #27ae60;
+  border: 1px solid #27ae60;
+}
+
+.badge-sortie {
+  background: #fdecea;
+  color: #e74c3c;
+  border: 1px solid #e74c3c;
+}
+
+.badge-ajustement {
+  background: #fdf6e3;
+  color: #d35400;
+  border: 1px solid #d35400;
+}

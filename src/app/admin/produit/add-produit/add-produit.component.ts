@@ -43,7 +43,7 @@ export class AddProduitComponent {
       nom: ['', [Validators.required, Validators.maxLength(255)]],
       description: [''],
       prix_unitaire: [0, [Validators.required, Validators.min(0)]],
-      stock: [0, [Validators.min(0)]],
+      stock: [0],
       status: [ Status.ACTIVE, Validators.required],
       photo_url: [null ],
       allergenes: this.formBuilder.array([])

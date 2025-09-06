@@ -1,0 +1,98 @@
+<main class="ingredient-order-container">
+  <header class="header">
+    <div class="header-text">
+      <h1><i class="fa fa-cart-plus"></i> Liste des commandes</h1>
+      <p>Suivi en temps réel des commandes d’ingrédients.</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-primary" (click)="addOrder()">
+        <i class="fa fa-plus-circle"></i> Nouvelle commande
+      </button>
+    </div>
+  </header>
+
+  <!-- Messages -->
+  <p class="message success" *ngIf="message">
+    <i class="fa fa-check-circle"></i> {{ message }}
+  </p>
+  <p class="message error" *ngIf="error">
+    <i class="fa fa-exclamation-triangle"></i> {{ error }}
+  </p>
+
+  <!-- Loader -->
+  <p *ngIf="isLoading" class="loading">
+    <i class="fa fa-spinner fa-spin"></i> Chargement des commandes...
+  </p>
+
+  <!-- Tableau des commandes -->
+  <div class="table-container" *ngIf="!isLoading && orders.length > 0; else emptyState">
+    <table>
+      <thead>
+        <tr>
+          <th>Ingrédient</th>
+          <th>Fournisseur</th>
+          <th>Quantité</th>
+          <th>Statut</th>
+          <th class="actions-col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{ order.ingredient.nom }}</td>
+          <td>{{ order.supplier.contact_person }}</td>
+          <td>{{ order.quantite }}</td>
+          <td>
+            <span
+              class="badge"
+              [ngClass]="{
+                'badge-attente': order.statut === 'en_attente',
+                'badge-livrer': order.statut === 'livrer',
+                'badge-annuler': order.statut === 'annuler'
+              }"
+            >
+              <i
+                class="fa"
+                [ngClass]="{
+                  'fa-clock': order.statut === 'en_attente',
+                  'fa-check-circle': order.statut === 'livrer',
+                  'fa-times-circle': order.statut === 'annuler'
+                }"
+              ></i>
+              {{ order.statut | titlecase }}
+            </span>
+          </td>
+          <td class="actions">
+            <a class="edit-link" (click)="editOrder(order.id)" title="Modifier">
+              <i class="fa fa-pencil"></i> 
+            </a>
+            &nbsp;
+            <a class="btn-action btn-cancel" *ngIf="order.statut === 'en_attente'" (click)="cancelOrder(order.id)">
+              <i class="fa fa-times-circle"></i>
+            </a>
+            <a class="delete-link" *ngIf="order.statut === 'en_attente'" (click)="deliverOrder(order.id)">
+              <i class="fa fa-check-circle"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Si liste vide -->
+  <ng-template #emptyState>
+    <p class="empty" *ngIf="!isLoading">
+      <i class="fa fa-info-circle"></i> Aucune commande enregistrée.
+    </p>
+  </ng-template>
+
+  <!-- Pagination -->
+  <div class="pagination" *ngIf="!isLoading && orders.length > 0 ">
+    <button  class="btn btn-primary" (click)="prevPage()" [disabled]="currentPage === 1">
+      <i class="fa fa-chevron-left"></i> Précédent
+    </button>
+    <span>{{ currentPage }} / {{ totalPages }}</span>
+    <button class="btn btn-primary" (click)="nextPage()" [disabled]="currentPage === totalPages">
+      <i class="fa fa-chevron-right"></i> Suivant
+    </button>
+  </div>
+</main>

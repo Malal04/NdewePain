@@ -18,6 +18,9 @@ import { EditIngredientComponent } from './inventoty/ingredient/edit-ingredient/
 import { MoveStockComponent } from './inventoty/stock/move-stock/move-stock.component';
 import { EditStockComponent } from './inventoty/stock/edit-stock/edit-stock.component';
 import { HistoryStockComponent } from './inventoty/stock/history-stock/history-stock.component';
+import { IndexCommandeComponent } from './inventoty/commande/index-commande/index-commande.component';
+import { AddCommandeComponent } from './inventoty/commande/add-commande/add-commande.component';
+import { EditCommandeComponent } from './inventoty/commande/edit-commande/edit-commande.component';
 
 const routes: Routes = [
   {
@@ -80,7 +83,17 @@ const routes: Routes = [
       },
       {
         path: 'history-stock/:id', component: HistoryStockComponent
-      }
+      },
+      // Commande Stock
+      {
+        path: 'index-commande-stock', component: IndexCommandeComponent
+      },
+      {
+        path: 'add-commande-stock', component: AddCommandeComponent
+      },
+      {
+        path: 'edit-commande-stock/:id', component: EditCommandeComponent
+      },
       
     ]
   }

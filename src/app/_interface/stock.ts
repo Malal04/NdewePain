@@ -1,4 +1,5 @@
 import { Produit } from "./produit";
+import { User } from "./user";
 
 export interface Stock {
     id: number,
@@ -31,6 +32,8 @@ export interface StockHistory {
     id: number,
     produit_id: number,
     type_mouvement: string,
+    produit: Produit,
+    user: User,
     quantite: number,
     user_id: number,
     commentaire: string,

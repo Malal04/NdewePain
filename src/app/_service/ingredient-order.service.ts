@@ -32,8 +32,8 @@ export class IngredientOrderService {
     return this.http.get<IngredientOrder[]>(`${this.url}/search?query=${query}`);
   }
 
-  getById(id: number): Observable<PaginatedResponse<IngredientOrder>> {
-    return this.http.get<PaginatedResponse<IngredientOrder>>(`${this.url}/${id}`);
+  getById(id: number): Observable<ApiResponse<IngredientOrder>> {
+    return this.http.get<ApiResponse<IngredientOrder>>(`${this.url}/${id}`);
   }
 
   update(id: number, dto: IngredientOrderDto): Observable<IngredientOrder> {

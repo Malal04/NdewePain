@@ -1,1 +1,68 @@
-<p>history-stock works!</p>
+<main class="stock-history-container">
+  <header class="header">
+    <div>
+        <h2><i class="fa fa-history"></i> Historique des mouvements</h2>
+        <p>Suivi détaillé des entrées, sorties et ajustements de stock.</p>
+    </div>
+    <div class="actions">
+        <button type="button" class="btn btn-secondary" (click)="addStock()">
+            <i class="fa fa-plus-circle"></i> Mouvement de Stock
+        </button>
+    </div>
+  </header>
+
+  <!-- Message d’erreur -->
+  <p class="message error" *ngIf="error">
+    <i class="fa fa-exclamation-triangle"></i> {{ error }}
+  </p>
+
+  <!-- Tableau -->
+  <div class="table-wrapper" *ngIf="historyStocks.length > 0">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Produit</th>
+          <th>Type</th>
+          <th>Quantité</th>
+          <th>Utilisateur</th>
+          <th>Commentaire</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let h of historyStocks">
+          <td>{{ h.created_at | date:'dd/MM/yyyy HH:mm' }}</td>
+          <td>{{ h.produit.nom }}</td>
+          <td>
+            <span
+              class="badge"
+              [ngClass]="{
+                'badge-entree': h.type_mouvement === 'entree',
+                'badge-sortie': h.type_mouvement === 'sortie',
+                'badge-ajustement': h.type_mouvement === 'ajustement'
+              }"
+            >
+              <i
+                class="fa"
+                [ngClass]="{
+                  'fa-plus-circle': h.type_mouvement === 'entree',
+                  'fa-minus-circle': h.type_mouvement === 'sortie',
+                  'fa-balance-scale': h.type_mouvement === 'ajustement'
+                }"
+              ></i>
+              {{ h.type_mouvement | titlecase }}
+            </span>
+          </td>
+          <td>{{ h.quantite }}</td>
+          <td>{{ h.user.nom }}</td>
+          <td>{{ h.commentaire || '-' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Message vide -->
+  <p class="empty" *ngIf="historyStocks.length === 0">
+    <i class="fa fa-info-circle"></i> Aucun mouvement enregistré pour ce stock.
+  </p>
+</main>
