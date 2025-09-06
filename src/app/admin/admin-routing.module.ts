@@ -9,6 +9,15 @@ import { AddCategoryComponent } from './category/add-category/add-category.compo
 import { EditProduitComponent } from './produit/edit-produit/edit-produit.component';
 import { EditCategoryComponent } from './category/edit-category/edit-category.component';
 import { IndexIngredientComponent } from './inventoty/ingredient/index-ingredient/index-ingredient.component';
+import { AddSupplierComponent } from './inventoty/supplier/add-supplier/add-supplier.component';
+import { IndexStockComponent } from './inventoty/stock/index-stock/index-stock.component';
+import { AddStockComponent } from './inventoty/stock/add-stock/add-stock.component';
+import { AddIngredientComponent } from './inventoty/ingredient/add-ingredient/add-ingredient.component';
+import { EditSupplierComponent } from './inventoty/supplier/edit-supplier/edit-supplier.component';
+import { EditIngredientComponent } from './inventoty/ingredient/edit-ingredient/edit-ingredient.component';
+import { MoveStockComponent } from './inventoty/stock/move-stock/move-stock.component';
+import { EditStockComponent } from './inventoty/stock/edit-stock/edit-stock.component';
+import { HistoryStockComponent } from './inventoty/stock/history-stock/history-stock.component';
 
 const routes: Routes = [
   {
@@ -42,6 +51,35 @@ const routes: Routes = [
       // Ingredient
       {
         path: 'index-ingredient', component: IndexIngredientComponent
+      },
+      {
+        path: 'add-ingredient', component: AddIngredientComponent
+      },
+      {
+        path: 'edit-ingredient/:id', component: EditIngredientComponent
+      },
+      // Supplier
+      {
+        path: 'add-supplier', component: AddSupplierComponent
+      },
+      {
+        path: 'edit-supplier/:id', component: EditSupplierComponent
+      },
+      // Stock
+      {
+        path: 'index-stock', component: IndexStockComponent
+      },
+      {
+        path: 'add-stock', component: AddStockComponent
+      },
+      {
+        path: 'move-stock', component: MoveStockComponent
+      },
+      {
+        path: 'edit-stock/:id', component: EditStockComponent
+      },
+      {
+        path: 'history-stock/:id', component: HistoryStockComponent
       }
       
     ]

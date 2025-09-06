@@ -1,0 +1,74 @@
+<main class="move-form-container">
+  <header class="header">
+    <h2><i class="fa fa-exchange-alt"></i> Nouveau mouvement de stock</h2>
+    <p>Enregistrez une entrée, une sortie ou un ajustement de stock.</p>
+  </header>
+
+  <!-- Messages -->
+  <p class="message success" *ngIf="message && !error">
+    <i class="fa fa-check-circle"></i> {{ message }}
+  </p>
+  <p class="message error" *ngIf="error">
+    <i class="fa fa-exclamation-triangle"></i> {{ error }}
+  </p>
+
+  <form [formGroup]="moveForm" (ngSubmit)="onSubmit()" novalidate>
+    <!-- Produit -->
+    <div class="form-group">
+      <label for="produit_id">Produit <span class="required">*</span></label>
+      <select id="produit_id" formControlName="produit_id">
+        <option value="">-- Sélectionner un produit --</option>
+        <option *ngFor="let p of produits" [value]="p.id">{{ p.nom }}</option>
+      </select>
+      <div class="error" *ngIf="moveForm.get('produit_id')?.touched && moveForm.get('produit_id')?.invalid">
+        <small>Le produit est obligatoire.</small>
+      </div>
+    </div>
+
+    <!-- Type de mouvement -->
+    <div class="form-group">
+      <label for="type_mouvement">Type de mouvement <span class="required">*</span></label>
+      <select id="type_mouvement" formControlName="type_mouvement">
+        <option value="">-- Choisir un type --</option>
+        <option value="entree">Entrée</option>
+        <option value="sortie">Sortie</option>
+        <option value="ajustement">Ajustement</option>
+      </select>
+      <div class="error" *ngIf="moveForm.get('type_mouvement')?.touched && moveForm.get('type_mouvement')?.invalid">
+        <small>Le type de mouvement est obligatoire.</small>
+      </div>
+    </div>
+
+    <!-- Quantité -->
+    <div class="form-group">
+      <label for="quantite">Quantité <span class="required">*</span></label>
+      <input type="number" id="quantite" formControlName="quantite" min="1" placeholder="Ex : 50" />
+      <div class="error" *ngIf="moveForm.get('quantite')?.touched && moveForm.get('quantite')?.invalid">
+        <small *ngIf="moveForm.get('quantite')?.errors?.['required']">La quantité est obligatoire.</small>
+        <small *ngIf="moveForm.get('quantite')?.errors?.['min']">La quantité doit être au moins 1.</small>
+      </div>
+    </div>
+
+    <!-- Commentaire -->
+    <div class="form-group">
+      <label for="commentaire">Commentaire</label>
+      <textarea id="commentaire" formControlName="commentaire" rows="3" placeholder="Optionnel : préciser la raison"></textarea>
+    </div>
+
+    <!-- Seuil minimum -->
+    <div class="form-group">
+      <label for="seuil_minimum">Seuil minimum</label>
+      <input type="number" id="seuil_minimum" formControlName="seuil_minimum" min="0" placeholder="Ex : 10" />
+    </div>
+
+    <!-- Actions -->
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" [disabled]="moveForm.invalid">
+        <i class="fa fa-save"></i> Enregistrer
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="cancel()">
+        <i class="fa fa-times"></i> Annuler
+      </button>
+    </div>
+  </form>
+</main>

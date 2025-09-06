@@ -35,8 +35,9 @@
         <tr>
           <th>Nom</th>
           <th>Quantité</th>
-          <th>Seuil</th>
-          <th>Fournisseur</th>
+          <th>Seuil de reapprovisionnement</th>
+          <th>Fournisseur (contact)</th>
+          <th>Fournisseur (Telephone)</th>
           <th>Statut</th>
           <th class="actions-col">Actions</th>
         </tr>
@@ -44,9 +45,10 @@
       <tbody>
         <tr *ngFor="let ing of ingredients">
           <td>{{ ing.nom }}</td>
-          <td>{{ ing.quantite }}</td>
-          <td>{{ ing.seuil_reappro }}</td>
-          <td>{{ ing.supplier.nom }}</td>
+          <td>{{ ing.quantite }} {{ ing.unite }}</td>
+          <td>{{ ing.seuil_reappro }} {{ ing.unite }}</td>
+          <td>{{ ing.supplier.contact_person }}</td>
+          <td>{{ ing.supplier.telephone }}</td>
           <td>
             <span [ngClass]="{'statut-actif': ing.statut === 'ok', 'statut-inactif': ing.statut !== 'ok'}">
               {{ ing.statut }}

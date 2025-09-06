@@ -1,1 +1,102 @@
-<p>index-stock works!</p>
+<main class="stock-container">
+    <!-- En-tête -->
+    <header class="header">
+        <div class="header-content">
+            <h1>
+                <i class="fa fa-boxes"></i> Gestion des Stocks
+            </h1>
+            <p>Suivi en temps réel des produits de votre boulangerie.</p>
+        </div>
+
+        <div class="actions">
+            <button type="button" class="btn btn-primary" (click)="addStock()">
+                <i class="fa fa-plus-circle"></i> Ajouter un Stock
+            </button>
+            <button type="button" class="btn btn-secondary" routerLink="/dashboard/move-stock">
+                <i class="fa fa-history"></i> Historique du Stock
+            </button>
+        </div>
+    </header>
+
+    <!-- Messages -->
+    <div *ngIf="message" class="alert success">
+        <i class="fa fa-check-circle"></i> {{ message }}
+    </div>
+    <div *ngIf="error" class="alert error">
+        <i class="fa fa-exclamation-triangle"></i> {{ error }}
+    </div>
+
+    <div class="stock-content">
+        <!-- Filtres -->
+        <div class="search-bar">
+            <div class="filter">
+                <label for="filterStatus"> 
+                    Filtrer : 
+                </label>
+                <select id="filterStatus" [(ngModel)]="filterStatus" (change)="filterStocks()">
+                    <option value="">Tous</option>
+                    <option value="in-stock">En stock</option>
+                    <option value="low-stock">Stock faible</option>
+                    <option value="out-stock">Rupture</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Tableau -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Produit</th>
+                        <th>Quantité</th>
+                        <th>Seuil minimum</th>
+                        <th>Statut</th>
+                        <th class="actions">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let stock of stocks">
+                        <td>{{ stock.produit.nom }}</td>
+                        <td>{{ stock.quantite_actuelle }}</td>
+                        <td>{{ stock.seuil_minimum }}</td>
+                        <td>
+                        <span class="status"
+                            [ngClass]="{
+                                'in-stock': stock.quantite_actuelle > stock.seuil_minimum,
+                                'low-stock': stock.quantite_actuelle > 0 && stock.quantite_actuelle <= stock.seuil_minimum,
+                                'out-stock': stock.quantite_actuelle === 0
+                            }">
+                            {{
+                            stock.quantite_actuelle === 0
+                                ? 'Rupture'
+                                : stock.quantite_actuelle <= stock.seuil_minimum
+                                ? 'Stock faible'
+                                : 'En stock'
+                            }}
+                        </span>
+                        </td>
+                        <td class="actions">
+                            <a class="edit-link" title="Modifier" (click)="editStock(stock.id)">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <a class="delete-link" title="Supprimer" (click)="deleteStock(stock.id)">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button type="button" (click)="prevPage()" [disabled]="currentPage === 1">
+                <i class="fa fa-arrow-left"></i> Précédent
+            </button>
+            <span>Page {{ currentPage }} sur {{ totalPages }}</span>
+            <button type="button" (click)="nextPage()" [disabled]="currentPage === totalPages">
+                Suivant <i class="fa fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+</main>

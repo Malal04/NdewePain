@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Envi, PaginatedResponse } from '../_interface/envi';
+import { ApiResponse, Envi, PaginatedResponse } from '../_interface/envi';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Supplier, SupplierDto } from '../_interface/supplier';
@@ -31,8 +31,8 @@ export class SupplierService {
     return this.http.get<PaginatedResponse<Supplier>>(`${this.url}/search?query=${query}`);
   }
 
-  getById(id: number): Observable<PaginatedResponse<Supplier>> {
-    return this.http.get<PaginatedResponse<Supplier>>(`${this.url}/${id}`);
+  getById(id: number): Observable<ApiResponse<Supplier>> {
+    return this.http.get<ApiResponse<Supplier>>(`${this.url}/${id}`);
   }
 
   update(id: number, dto: SupplierDto): Observable<Supplier> {

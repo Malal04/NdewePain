@@ -186,6 +186,17 @@ td.actions {
   color: #fff;
 }
 
+.history-link {
+  background: #fff0f0;
+  color: #85cd8f;
+  border: 1px solid #55a849;
+}
+
+.history-link:hover {
+  background: #2eaf3b;
+  color: #fff;
+}
+
 /* Détails */
 .details-link {
   background: #eaf2ff;

@@ -1,7 +1,7 @@
 <main class="ingredient-form-container">
-  <h2><i class="fa fa-carrot"></i> Ajouter un Ingrédient</h2>
+  <h2><i class="fa fa-carrot"></i> Modifier un Ingrédient</h2>
 
-  <!-- Message global -->
+  <!-- Messages globaux -->
   <p class="message success" *ngIf="message && !error">{{ message }}</p>
   <p class="message error" *ngIf="error">{{ error }}</p>
 
@@ -72,10 +72,7 @@
         formControlName="seuil_reappro"
         placeholder="Ex : 10"
       />
-      <div
-        class="error"
-        *ngIf="f['seuil_reappro'].touched && f['seuil_reappro'].invalid"
-      >
+      <div class="error" *ngIf="f['seuil_reappro'].touched && f['seuil_reappro'].invalid">
         <small *ngIf="f['seuil_reappro'].errors?.['required']">
           Le seuil est obligatoire.
         </small>
@@ -91,13 +88,10 @@
       <select id="supplier_id" formControlName="supplier_id">
         <option value="">-- Sélectionner un fournisseur --</option>
         <option *ngFor="let sup of suppliers" [value]="sup.id">
-          {{ sup.nom }} & {{ sup.contact_person }}
+          {{ sup.nom }} — {{ sup.contact_person }}
         </option>
       </select>
-      <div
-        class="error"
-        *ngIf="f['supplier_id'].touched && f['supplier_id'].invalid"
-       >
+      <div class="error" *ngIf="f['supplier_id'].touched && f['supplier_id'].invalid">
         <small *ngIf="f['supplier_id'].errors?.['required']">
           Le fournisseur est obligatoire.
         </small>
@@ -106,12 +100,8 @@
 
     <!-- Boutons -->
     <div class="form-actions">
-      <button
-        type="submit"
-        [disabled]="ingredientForm.invalid"
-        class="btn btn-primary"
-      >
-        <i class="fa fa-save"></i> Enregistrer
+      <button type="submit" [disabled]="ingredientForm.invalid" class="btn btn-primary">
+        <i class="fa fa-save"></i> Mettre à jour
       </button>
       <button type="button" (click)="cancel()" class="btn btn-secondary">
         <i class="fa fa-times"></i> Annuler

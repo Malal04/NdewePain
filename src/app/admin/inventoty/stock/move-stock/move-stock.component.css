@@ -1,11 +1,11 @@
 /* Container principal */
-.stock-form-container {
-  max-width: 600px;
+.move-form-container {
+  max-width: 650px;
   margin: 30px auto;
-  padding: 25px 30px;
+  padding: 30px;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   font-family: "Segoe UI", Roboto, sans-serif;
   color: #333;
 }
@@ -17,34 +17,34 @@
 }
 
 .header h2 {
-  color: #d35400;
-  margin: 0;
+  color: #2c3e50;
   font-size: 24px;
+  margin: 0;
 }
 
 .header p {
+  color: #7f8c8d;
   font-size: 14px;
-  color: #666;
-  margin-top: 5px;
+  margin-top: 6px;
 }
 
-/* Champs du formulaire */
+/* Groupes de champs */
 .form-group {
   margin-bottom: 20px;
 }
 
-.form-group label {
+label {
   display: block;
   font-weight: 600;
   margin-bottom: 6px;
   color: #444;
 }
 
-.form-group .required {
+.required {
   color: #e74c3c;
-  font-weight: bold;
 }
 
+/* Inputs */
 input,
 select,
 textarea {
@@ -59,14 +59,14 @@ textarea {
 input:focus,
 select:focus,
 textarea:focus {
+  border-color: #2980b9;
+  box-shadow: 0 0 5px rgba(41, 128, 185, 0.4);
   outline: none;
-  border-color: #d35400;
-  box-shadow: 0 0 5px rgba(211, 84, 0, 0.4);
 }
 
 /* Messages */
 .message {
-  padding: 10px 15px;
+  padding: 12px 15px;
   border-radius: 8px;
   margin-bottom: 20px;
   font-size: 14px;
@@ -90,12 +90,12 @@ textarea:focus {
   font-size: 12px;
 }
 
-/* Boutons */
+/* Actions */
 .form-actions {
   display: flex;
   justify-content: flex-end;
   gap: 12px;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .btn {
@@ -108,12 +108,12 @@ textarea:focus {
 }
 
 .btn-primary {
-  background: #d35400;
+  background: #2980b9;
   color: #fff;
 }
 
 .btn-primary:hover {
-  background: #e67e22;
+  background: #3498db;
   transform: translateY(-1px);
 }
 

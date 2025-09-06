@@ -1,7 +1,7 @@
 <main class="stock-form-container">
   <header class="header">
-    <h2><i class="fa fa-boxes"></i> Gestion du stock</h2>
-    <p>Ajoutez ou modifiez les niveaux de stock de vos produits.</p>
+    <h2><i class="fa fa-edit"></i> Modifier le stock</h2>
+    <p>Mettez à jour les niveaux de stock du produit sélectionné.</p>
   </header>
 
   <!-- Messages -->
@@ -18,56 +18,28 @@
       <label for="produit_id">Produit <span class="required">*</span></label>
       <select id="produit_id" formControlName="produit_id">
         <option value="">-- Sélectionner un produit --</option>
-        <option *ngFor="let p of produits" [value]="p.id">
-          {{ p.nom }}
-        </option>
+        <option *ngFor="let p of produits" [value]="p.id">{{ p.nom }}</option>
       </select>
       <div class="error" *ngIf="stockForm.get('produit_id')?.touched && stockForm.get('produit_id')?.invalid">
-        <small *ngIf="stockForm.get('produit_id')?.errors?.['required']">
-          Le produit est obligatoire.
-        </small>
+        <small>Le produit est obligatoire.</small>
       </div>
     </div>
 
     <!-- Quantité actuelle -->
     <div class="form-group">
       <label for="quantite_actuelle">Quantité actuelle</label>
-      <input
-        id="quantite_actuelle"
-        type="number"
-        step="1"
-        min="0"
-        formControlName="quantite_actuelle"
-        placeholder="Ex : 100"
-      />
-      <div
-        class="error"
-        *ngIf="stockForm.get('quantite_actuelle')?.touched && stockForm.get('quantite_actuelle')?.invalid"
-      >
-        <small *ngIf="stockForm.get('quantite_actuelle')?.errors?.['min']">
-          La quantité doit être ≥ 0.
-        </small>
+      <input type="number" id="quantite_actuelle" formControlName="quantite_actuelle" min="0" />
+      <div class="error" *ngIf="stockForm.get('quantite_actuelle')?.touched && stockForm.get('quantite_actuelle')?.invalid">
+        <small>La quantité doit être ≥ 0.</small>
       </div>
     </div>
 
     <!-- Seuil minimum -->
     <div class="form-group">
       <label for="seuil_minimum">Seuil minimum</label>
-      <input
-        id="seuil_minimum"
-        type="number"
-        step="1"
-        min="0"
-        formControlName="seuil_minimum"
-        placeholder="Ex : 10"
-      />
-      <div
-        class="error"
-        *ngIf="stockForm.get('seuil_minimum')?.touched && stockForm.get('seuil_minimum')?.invalid"
-      >
-        <small *ngIf="stockForm.get('seuil_minimum')?.errors?.['min']">
-          Le seuil doit être ≥ 0.
-        </small>
+      <input type="number" id="seuil_minimum" formControlName="seuil_minimum" min="0" />
+      <div class="error" *ngIf="stockForm.get('seuil_minimum')?.touched && stockForm.get('seuil_minimum')?.invalid">
+        <small>Le seuil doit être ≥ 0.</small>
       </div>
     </div>
 

@@ -7,6 +7,7 @@ export interface Ingredient {
     quantite: string;
     seuil_reappro: number;
     supplier: Supplier;
+    unite: string;
     statut: StatutIngredient;
     created_at: Date;
 }
@@ -16,5 +17,6 @@ export interface IngredientDto {
     nom: string;
     quantite: string;
     seuil_reappro: number;
+    unite: string;
     statut: StatutIngredient;
 }

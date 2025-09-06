@@ -1,0 +1,93 @@
+<main class="supplier-form-container">
+  <h2><i class="fa fa-truck"></i> Modifier un Fournisseur</h2>
+
+  <!-- Messages -->
+  <p class="message success" *ngIf="message && !error">{{ message }}</p>
+  <p class="message error" *ngIf="error">{{ error }}</p>
+
+  <form [formGroup]="supplierForm" (ngSubmit)="onSubmit()">
+    <!-- Nom -->
+    <div class="form-group">
+      <label for="nom">Nom <span>*</span></label>
+      <input
+        id="nom"
+        type="text"
+        formControlName="nom"
+        placeholder="Ex : Moulin du Pain"
+      />
+      <div class="error" *ngIf="supplierForm.get('nom')?.touched && supplierForm.get('nom')?.invalid">
+        <small *ngIf="supplierForm.get('nom')?.errors?.['required']">Le nom est obligatoire.</small>
+        <small *ngIf="supplierForm.get('nom')?.errors?.['maxlength']">Max 255 caractères.</small>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="form-group">
+      <label for="contact_person">Personne de contact <span>*</span></label>
+      <input
+        id="contact_person"
+        type="text"
+        formControlName="contact_person"
+        placeholder="Ex : Jean Dupont"
+      />
+      <div class="error" *ngIf="supplierForm.get('contact_person')?.touched && supplierForm.get('contact_person')?.invalid">
+        <small *ngIf="supplierForm.get('contact_person')?.errors?.['required']">Le contact est obligatoire.</small>
+        <small *ngIf="supplierForm.get('contact_person')?.errors?.['maxlength']">Max 255 caractères.</small>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email <span>*</span></label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="Ex : contact@moulin.fr"
+      />
+      <div class="error" *ngIf="supplierForm.get('email')?.touched && supplierForm.get('email')?.invalid">
+        <small *ngIf="supplierForm.get('email')?.errors?.['required']">L’email est obligatoire.</small>
+        <small *ngIf="supplierForm.get('email')?.errors?.['email']">Format email invalide.</small>
+        <small *ngIf="supplierForm.get('email')?.errors?.['maxlength']">Max 255 caractères.</small>
+      </div>
+    </div>
+
+    <!-- Téléphone -->
+    <div class="form-group">
+      <label for="telephone">Téléphone</label>
+      <input
+        id="telephone"
+        type="text"
+        formControlName="telephone"
+        placeholder="Ex : +221 77 123 45 67"
+      />
+      <div class="error" *ngIf="supplierForm.get('telephone')?.touched && supplierForm.get('telephone')?.invalid">
+        <small *ngIf="supplierForm.get('telephone')?.errors?.['maxlength']">Max 20 caractères.</small>
+      </div>
+    </div>
+
+    <!-- Adresse -->
+    <div class="form-group">
+      <label for="adresse">Adresse</label>
+      <textarea
+        id="adresse"
+        rows="3"
+        formControlName="adresse"
+        placeholder="Ex : Rue des Boulangeries, Dakar"
+      ></textarea>
+      <div class="error" *ngIf="supplierForm.get('adresse')?.touched && supplierForm.get('adresse')?.invalid">
+        <small *ngIf="supplierForm.get('adresse')?.errors?.['maxlength']">Max 500 caractères.</small>
+      </div>
+    </div>
+
+    <!-- Boutons -->
+    <div class="form-actions">
+      <button type="submit" [disabled]="supplierForm.invalid" class="btn btn-primary">
+        <i class="fa fa-save"></i> Mettre à jour
+      </button>
+      <button type="button" (click)="cancel()" class="btn btn-secondary">
+        <i class="fa fa-times"></i> Annuler
+      </button>
+    </div>
+  </form>
+</main>

@@ -11,12 +11,19 @@ export class ProduitService {
 
   private readonly url = `${Envi.Url}/produits`;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient
+  ) {}
 
   getAll(page: number = 1): Observable<PaginatedResponse<Produit>> {
     return this.http.get<PaginatedResponse<Produit>>(this.url, {
       params: { page: page.toString() } 
     });
+  }
+
+  /** Liste des produits */
+  getAllProduits(): Observable<PaginatedResponse<Produit>> {
+    return this.http.get<PaginatedResponse<Produit>>(`${this.url}/all`);
   }
 
   create(produit: ProduitDto | FormData): Observable<Produit> {
@@ -41,12 +48,7 @@ export class ProduitService {
 
   update(id: number, formData: FormData ): Observable<Produit> {
     return this.http.put<Produit>(`${this.url}/${id}`, formData);
-  }
-
-  // update(id: number, formData: FormData): Observable<Produit> {
-  //   return this.http.put<Produit>(`${this.url}/${id}`, formData);
-  // }
-  
+  }  
 
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.url}/${id}`);

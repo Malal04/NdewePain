@@ -2,12 +2,11 @@ import { Produit } from "./produit";
 
 export interface Stock {
     id: number,
-    produit_id: number,
     produit: Produit,
     quantite_actuelle: number,
     seuil_minimum: number,
     statut: string,
-    historique: StockHistory[],
+    historique: StockHistory,
     created_at: Date,
     updated_at: Date,
 }

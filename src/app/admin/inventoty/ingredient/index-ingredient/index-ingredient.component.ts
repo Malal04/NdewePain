@@ -26,7 +26,6 @@ export class IndexIngredientComponent {
   searchTerm: string = '';
   message: string = '';
   environment = Envi;
-
   searchType: string = 'ingredients';
 
   onSearch(): void {
@@ -90,18 +89,6 @@ export class IndexIngredientComponent {
         setTimeout(() => this.message = '', 3000);
       }
     });
-  }
-
-  toggleStatus(id: number): void {
-    if (confirm("Êtes-vous sûr de vouloir changer le statut de ce ingredient ?")) {
-      this.ingredientService.toggleStatus(id).subscribe({
-        next: () => this.getIngredients(this.currentPageIngredients),
-        error: () => {
-          this.message = "Impossible de changer le statut de l'ingrédient.";
-          setTimeout(() => this.message = '', 3000);
-        }
-      });
-    }
   }
 
   deleteIngredient(id: number): void {

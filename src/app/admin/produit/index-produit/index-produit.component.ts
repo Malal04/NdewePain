@@ -77,6 +77,10 @@ export class IndexProduitComponent {
    this.router.navigate(['/dashboard/edit-produit', id]);
   }
 
+  historyStock(id: number): void {
+    this.router.navigate(['/dashboard/history-stock', id]);
+  }
+
   addProduit(): void {
     this.router.navigate(['/dashboard/add-produit']);
   }
