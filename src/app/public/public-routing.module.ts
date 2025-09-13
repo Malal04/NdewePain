@@ -10,6 +10,7 @@ import { PromotionComponent } from './promotion/promotion.component';
 import { MenuComponent } from './menu/menu.component';
 import { DetailsComponent } from './details/details.component';
 import { SettingComponent } from '../_utils/setting/setting.component';
+import { AddProfilComponent } from './profil/add-profil/add-profil.component';
 
 const routes: Routes = [
   { 
@@ -40,13 +41,16 @@ const routes: Routes = [
     path: 'menu', component: MenuComponent
   },
   {
-    path: 'details', component: DetailsComponent
+    path: 'details/:id', component: DetailsComponent
   },
   {
     path: 'chechout', loadChildren: () => import('./pagnier/pagnier.module').then(m => m.PagnierModule)
   },
   {
-    path: 'setting', component: SettingComponent
+    path: 'setting/:id', component: SettingComponent
+  },
+  {
+    path: 'add-profil', component: AddProfilComponent
   }
 
 

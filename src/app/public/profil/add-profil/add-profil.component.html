@@ -1,0 +1,82 @@
+
+<header class="header">
+    <app-header></app-header>
+</header>
+
+<main class="adresse-container">
+  <!-- En-tête -->
+  <div class="titre">
+    <div class="tre">
+      <h1>Ajouter une adresse</h1>
+      <p>Complétez les informations ci-dessous pour enregistrer votre nouvelle adresse de livraison ou de retrait.</p>
+    </div>
+    <div class="bte">
+      <button type="button" (click)="retourne()">Retour</button>
+    </div>
+  </div>
+
+  <!-- Formulaire -->
+  <div class="adresses">
+    <form [formGroup]="adresseForm" (ngSubmit)="onSubmit()">
+      
+      <div class="group-form">
+        <label>Adresse :</label>
+        <input type="text" formControlName="ligne_adresse" placeholder="Rue, numéro, etc." />
+        <small *ngIf="adresseForm.get('ligne_adresse')?.invalid && adresseForm.get('ligne_adresse')?.touched" class="error">Adresse invalide</small>
+      </div>
+
+      <div class="group-form">
+        <label>Ville :</label>
+        <input type="text" formControlName="ville" placeholder="Ex : Dakar" />
+        <small *ngIf="adresseForm.get('ville')?.invalid && adresseForm.get('ville')?.touched" class="error">Ville obligatoire</small>
+      </div>
+
+      <div class="group-form">
+        <label>Code postal :</label>
+        <input type="text" formControlName="code_postal" placeholder="Ex : 75000" />
+        <small *ngIf="adresseForm.get('code_postal')?.invalid && adresseForm.get('code_postal')?.touched" class="error">Code postal invalide</small>
+      </div>
+
+      <div class="group-form">
+        <label>Pays :</label>
+        <input type="text" formControlName="pays" readonly />
+      </div>
+
+      <div class="group-form checkbox">
+        <label>
+          <input type="checkbox" formControlName="est_principale" /> Définir comme adresse principale
+        </label>
+      </div>
+
+      <div class="group-form">
+        <label>Type d’adresse :</label>
+        <select formControlName="type">
+          <option value="maison">Maison</option>
+          <option value="travail">Travail</option>
+        </select>
+      </div>
+
+      <div class="group-form">
+        <label>Mode de livraison :</label>
+        <select formControlName="mode_livraison">
+          <option value="livraison">Livraison à domicile</option>
+          <option value="retrait">Retrait en boutique</option>
+        </select>
+      </div>
+
+      <!-- Boutons -->
+      <div class="group-btn">
+        <button type="submit" [disabled]="loading">{{ loading ? 'Ajout en cours...' : 'Ajouter l’adresse' }}</button>
+      </div>
+    </form>
+
+    <!-- Messages -->
+    <div *ngIf="message" class="message" [ngClass]="success ? 'success' : 'error'">
+      {{ message }}
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+    <app-footer></app-footer>
+</footer>

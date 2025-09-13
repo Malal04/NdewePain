@@ -1,0 +1,123 @@
+/* Style global */
+.dashboard-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #fdfdfd;
+  min-height: 100vh;
+  padding: 30px;
+  color: #333;
+}
+
+/* En-tête */
+.dashboard-header h1 {
+  font-size: 26px;
+  margin-bottom: 8px;
+  color: #2c2c2c;
+}
+.dashboard-header p {
+  color: #666;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+/* Onglets */
+.tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+.tab {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.tab:hover {
+  background: #f7f7f7;
+}
+.tab.active {
+  background: #d35400;
+  color: #fff;
+  border-color: #d35400;
+  font-weight: 600;
+}
+
+/* Grille des cartes */
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card h2 {
+  font-size: 16px;
+  margin: 0;
+  color: #444;
+}
+.value {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 12px 0;
+  color: #2c2c2c;
+}
+
+/* Croissance */
+.growth {
+  font-size: 14px;
+  font-weight: 600;
+}
+.positif { color: #1a9d57; }
+.negatif { color: #e53935; }
+
+/* Mini progress bars */
+.mini-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.mini-bars span {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+.progress {
+  background: #f0f0f0;
+  border-radius: 6px;
+  height: 8px;
+  overflow: hidden;
+}
+.progress div {
+  background: #d35400;
+  height: 100%;
+  border-radius: 6px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-header h1 {
+    font-size: 22px;
+  }
+  .value {
+    font-size: 20px;
+  }
+}

@@ -241,3 +241,21 @@ h2 {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.cart-actions {
+  margin-top: 15px;
+  text-align: right;
+}
+
+.btn-clear {
+  background: #dc3545;
+  color: #fff;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-clear:hover {
+  background: #b52a37;
+}

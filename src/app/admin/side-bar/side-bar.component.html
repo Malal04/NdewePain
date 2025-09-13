@@ -1,109 +1,111 @@
 <!-- Sidebar -->
 <div class="sideB">
-    <a routerLink="/dashboard" routerLinkActive="active" class="brand" (click)="onItemClick()">
-        <span class="text">
-            NDEWEPAIN
-        </span>
-    </a>
-   <div class="sideBI">
-        <ul class="side-menu top">
-            <li class="active">
-                <a routerLink="/dashboard" routerLinkActive="active" (click)="onItemClick()">
-                    <i class="fa fa-dashboard"></i>
-                    <span class="text">Dashboard</span>
-                </a>
-            </li>
+  <a routerLink="/dashboard" routerLinkActive="active" class="brand" (click)="onItemClick()">
+    <span class="text">NDEWEPAIN</span>
+  </a>
 
-            <li class="dropdown-container">
-                <a (click)="toggleDropdown($event)">
-                    <i class="fa fa-cart-plus"></i>
-                    <span class="text">Produits</span>
-                    <i class="fa fa-angle-down dropdown-icon"></i>
-                </a>
-                <ul class="dropdown">
-                    <li>
-                        <a routerLink="/dashboard/index-produit" routerLinkActive="active" (click)="onItemClick()">
-                            <i class="fa fa-cart-plus"></i>
-                            <span>Liste des produits</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/dashboard/index-categorie" routerLinkActive="active" (click)="onItemClick()">
-                            <i class="fa fa-th-list"></i>
-                            <span>Liste des catégories</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            
-            <li class="dropdown-container">
-                <a (click)="toggleDropdown($event)">
-                    <i class="fa fa-truck"></i>
-                    <span class="text">Inventaire</span>
-                    <i class="fa fa-angle-down dropdown-icon"></i>
-                </a>
-                <ul class="dropdown">
-                    <li>
-                        <a routerLink="/dashboard/index-ingredient" routerLinkActive="active" (click)="onItemClick()">
-                            <i class="fa fa-truck"></i>
-                            <span>Liste des IG & FN</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/dashboard/index-stock" routerLinkActive="active" (click)="onItemClick()">
-                            <i class="fa fa-truck"></i>
-                            <span>Liste des stocks</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/dashboard/index-commande-stock" routerLinkActive="active" (click)="onItemClick()">
-                            <i class="fa fa-truck"></i>
-                            <span>Liste des commandes IG</span>
-                        </a>
-                    </li>                    
-                </ul>
-            </li>
-   
+  <div class="sideBI">
+    <ul class="side-menu top">
+      <li class="active">
+        <a routerLink="/dashboard" routerLinkActive="active" (click)="onItemClick()">
+          <i class="fa fa-dashboard"></i>
+          <span class="text">Dashboard</span>
+        </a>
+      </li>
+
+      <li class="dropdown-container">
+        <a (click)="toggleDropdown($event)" routerLink="/dashboard/rapports">
+          <i class="fa fa-chart"></i>
+          <span class="text">Rapports</span>
+        </a>
+      </li>
+
+      <li class="dropdown-container">
+        <a (click)="toggleDropdown($event)">
+          <i class="fa fa-cart-plus"></i>
+          <span class="text">Produits</span>
+          <i class="fa fa-angle-down dropdown-icon"></i>
+        </a>
+        <ul class="dropdown">
+          <li>
+            <a routerLink="/dashboard/index-produit" routerLinkActive="active" (click)="onItemClick()">
+              <i class="fa fa-cart-plus"></i>
+              <span>Liste des produits</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/dashboard/index-categorie" routerLinkActive="active" (click)="onItemClick()">
+              <i class="fa fa-th-list"></i>
+              <span>Liste des catégories</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/dashboard/index-promotion" routerLinkActive="active" (click)="onItemClick()">
+              <i class="fa fa-gift"></i>
+              <span>Liste des promotions</span>
+            </a>
+          </li>
         </ul>
-   </div>
+      </li>
 
-   <div class="sideM">
-        <ul class="side-menu">
-            <li class="dropdown-container">
-                <a (click)="toggleDropdown($event)">
-                    <i class="fa fa-user"></i>
-                    <span class="text">Utilisateurs</span>
-                  <i class="fa fa-angle-down dropdown-icon"></i>
-                </a>
-                <ul class="dropdown">
-                    <li>
-                        <a routerLink="/dashboard/utilisateurs" routerLinkActive="active" (click)="onItemClick()">
-                            <i class="fa fa-user"></i>
-                            <span>Listes utilisateurs</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a routerLink="/dashboard/utilisateurs/add" routerLinkActive="active" (click)="onItemClick()">
-                            <i class="fa fa-user-plus"></i>
-                            <span>Nouveau utilisateur</span>
-                        </a>
-                    </li>
-                </ul>
-            </li> 
-
-            <li>
-                <a routerLink="/dashboard/profile" routerLinkActive="active" (click)="onItemClick()">
-                    <i class="fa fa-user"></i>
-                    <span class="text">Profile</span>
-                </a>
-            </li>
-            <li>
-                <a (click)="onLogout()" class="logout">
-                    <i class="fa fa-bracket"></i>
-                    <span class="text">Déconnexion</span>
-                </a>
-            </li>
+      <li class="dropdown-container">
+        <a (click)="toggleDropdown($event)">
+          <i class="fa fa-truck"></i>
+          <span class="text">Inventaire</span>
+          <i class="fa fa-angle-down dropdown-icon"></i>
+        </a>
+        <ul class="dropdown">
+          <li>
+            <a routerLink="/dashboard/index-ingredient" routerLinkActive="active" (click)="onItemClick()">
+              <i class="fa fa-truck"></i>
+              <span>Liste des IG & FN</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/dashboard/index-stock" routerLinkActive="active" (click)="onItemClick()">
+              <i class="fa fa-truck"></i>
+              <span>Liste des stocks</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/dashboard/index-commande-stock" routerLinkActive="active" (click)="onItemClick()">
+              <i class="fa fa-cart-plus"></i>
+              <span>Liste des commandes IG</span>
+            </a>
+          </li>
         </ul>
-   </div>
-   
+      </li>
+
+      <li class="dropdown-container">
+        <a (click)="toggleDropdown($event)" routerLink="/dashboard/index-ordre">
+          <i class="fa fa-shopping-cart"></i>
+          <span class="text">Gestion des commandes</span>
+        </a>
+      </li>
+
+      <li class="dropdown-container" *ngIf="isAdmin">
+        <a (click)="toggleDropdown($event)" routerLink="/dashboard/index-employer">
+          <i class="fa fa-user"></i>
+          <span class="text">Gestion des employés</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="sideM">
+    <ul class="side-menu">
+      <li class="dropdown-container" *ngIf="isAdmin">
+        <a (click)="toggleDropdown($event)" routerLink="/dashboard/mes-employer" routerLinkActive="active">
+          <i class="fa fa-user"></i>
+          <span class="text">Utilisateurs</span>
+        </a>
+      </li>
+      <li>
+        <a (click)="onLogout()" class="logout">
+          <i class="fa fa-right-from-bracket"></i>
+          <span class="text">Déconnexion</span>
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>

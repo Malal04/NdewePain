@@ -10,3 +10,17 @@ export enum StatutIngredientOrder {
     ANNULER = 'annuler'
 }
 
+
+export enum TypeRemise {
+    POURCENTAGE = 'pourcentage', 
+    MONTANT = 'montant', 
+    BOGO = 'bogo', 
+    GRATUIT_LIVRAISON = 'gratuit_livraison'
+}
+
+export enum StatutPromotion {
+    ACTIVE = 'active', 
+    INACTIVE = 'inactive'
+}
+
+

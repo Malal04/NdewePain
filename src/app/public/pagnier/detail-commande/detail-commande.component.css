@@ -1,0 +1,189 @@
+/* Section principale */
+.detail-commande {
+  padding: 60px 20px;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+.titre {
+  text-align: center;
+  margin-bottom: 25px;
+  padding-top: 50px;
+}
+
+.titre h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #d35400;
+}
+
+.sous-titre {
+  font-size: 16px;
+  color: #666;
+}
+
+.highlight {
+  color: #d35400;
+  font-weight: 600;
+}
+
+/* Carte */
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  padding: 25px;
+  max-width: 950px;
+  margin: auto;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #111;
+  border-bottom: 2px solid #fde5d9;
+  padding-bottom: 6px;
+}
+
+.order-details,
+.order-products,
+.order-payment,
+.order-summary,
+.order-client {
+  margin-bottom: 30px;
+}
+
+/* Lignes info */
+.order-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.order-row strong {
+  color: #444;
+}
+
+/* Produits */
+.produit {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.produit-image img {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid #eee;
+}
+
+.produit-info .nom {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.produit-info p {
+  margin: 2px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Badge statut */
+.badge {
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: #fff;
+}
+
+.badge.en_attente { 
+    background: #f39c12;
+}
+
+.badge.validee {
+    background: #27ae60; 
+}
+
+.badge.annulee { 
+    background: #e74c3c; 
+}
+
+/* Résumé */
+.order-summary .total-final span {
+  font-size: 18px;
+  font-weight: 700;
+  color: #d35400;
+}
+
+/* Client */
+.client-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.client-photo {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: 2px solid #eee;
+  object-fit: cover;
+}
+
+.client-nom {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.client-contact {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Bouton retour */
+.actions {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn-retour {
+  background: #d35400;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-retour:hover {
+  background: #b84300;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .order-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .order-row span {
+    margin-top: 5px;
+  }
+  .produit {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

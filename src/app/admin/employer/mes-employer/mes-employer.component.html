@@ -1,0 +1,66 @@
+<main class="employe-container">
+  <div class="employe">
+    <!-- En-tête -->
+    <div class="header">
+      <div class="titre">
+        <h1>Gestion des utilisateur</h1>
+        <p>Administrez les comptes et rôles du personnel de la boulangerie.</p>
+      </div>
+      <div class="buttons">
+        <button class="add-employe">+ Ajouter un employé</button>
+      </div>
+    </div>
+
+    <!-- Loading / Erreur -->
+    <div *ngIf="loading">Chargement en cours...</div>
+    <div *ngIf="error" class="error">{{ error }}</div>
+
+    <!-- Tableau des employés -->
+    <div class="table-wrapper" *ngIf="!loading && employes.length > 0">
+      <table class="employe-table">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Contact</th>
+            <th>Rôle</th>
+            <th>Statut</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let emp of employes">
+            <td>{{ emp.nom }}</td>
+            <td>{{ emp.email }}</td>
+            <td>{{ emp.role }}</td>
+            <td>
+              <span
+                class="status"
+                [ngClass]="emp.accountState"
+              >
+                {{ emp.accountState }}
+              </span>
+            </td>
+            <td>
+              <button class="edit-btn" (click)="toggleStatut(emp)">
+                {{ emp.accountState }}
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <!-- Pagination -->
+      <div class="pagination" *ngIf="!loading && employes.length > 0">
+        <button (click)="prevPage()" [disabled]="currentPage === 1">← Précédent</button>
+        <span>Page {{ currentPage }} / {{ lastPage }}</span>
+        <button (click)="nextPage()" [disabled]="currentPage === lastPage">Suivant →</button>
+      </div>
+
+    </div>
+
+    <!-- Pas d'employés -->
+    <div *ngIf="!loading && employes.length === 0" class="empty">
+      Aucun employé trouvé.
+    </div>
+  </div>
+</main>

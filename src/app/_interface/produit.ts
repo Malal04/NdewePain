@@ -1,5 +1,6 @@
 import { Status } from "../_enum/dtos";
 import { Category } from "./category";
+import { ApiResponse } from "./envi";
 
 export interface Produit {
     id: number;
@@ -26,3 +27,8 @@ export interface ProduitDto {
     allergenes: string[];
     status: Status; 
 }
+
+export interface ProduitResponse extends ApiResponse <{
+    produit: Produit;
+    related: Produit[];
+} > {}

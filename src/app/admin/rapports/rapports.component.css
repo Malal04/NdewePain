@@ -1,0 +1,185 @@
+/* Style global */
+.rapports-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #fafafa;
+  min-height: 100vh;
+  padding: 30px;
+}
+
+.rapports {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Titre + intro */
+.headers h1 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.headers p {
+  color: #666;
+  font-size: 15px;
+  margin-bottom: 18px;
+}
+
+/* Bouton Export */
+.export-btn {
+  background: #d35400;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+.export-btn:hover {
+  background: #b94500;
+  transform: translateY(-2px);
+}
+
+/* Onglets */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+.tab {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.tab:hover {
+  background: #f7f7f7;
+}
+.tab.active {
+  background: #d35400;
+  color: #fff;
+  border-color: #d35400;
+  font-weight: 600;
+}
+
+/* Recherche */
+.search-wrapper {
+  position: relative;
+  max-width: 500px;
+  margin-bottom: 25px;
+}
+.search-wrapper i {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  color: #aaa;
+}
+.search-bar {
+  width: 100%;
+  padding: 10px 16px 10px 40px;
+  border-radius: 25px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: border 0.3s;
+}
+.search-bar:focus {
+  border: 1px solid #d35400;
+  box-shadow: 0 0 5px rgba(211, 84, 0, 0.2);
+}
+
+/* Graphiques */
+.charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-bottom: 30px;
+}
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+.card:hover {
+  transform: translateY(-3px);
+}
+.card h2 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  color: #333;
+}
+.amount {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 12px;
+  color: #222;
+}
+.growth {
+  font-size: 14px;
+  margin-left: 8px;
+}
+.positif { color: #1a9d57; font-weight: 600; }
+.negatif { color: #e53935; font-weight: 600; }
+
+/* Tableau */
+.table-container {
+  background: #fff;
+  border-radius: 14px;
+  overflow-x: auto;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  margin-top: 15px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+th, td {
+  padding: 14px 18px;
+  border-bottom: 1px solid #f3f3f3;
+  text-align: left;
+  font-size: 14px;
+}
+th {
+  color: #555;
+  font-weight: 600;
+  background: #fafafa;
+}
+tr:hover td {
+  background: #fff8f3;
+}
+
+/* Progress bar */
+.progress {
+  display: inline-block;
+  background: #f0f0f0;
+  border-radius: 8px;
+  width: 80px;
+  height: 8px;
+  margin-right: 6px;
+  overflow: hidden;
+}
+.progress div {
+  background: #d35400;
+  height: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .charts {
+    grid-template-columns: 1fr;
+  }
+  .headers h1 {
+    font-size: 22px;
+  }
+  .amount {
+    font-size: 18px;
+  }
+}

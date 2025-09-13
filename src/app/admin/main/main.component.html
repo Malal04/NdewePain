@@ -1,1 +1,76 @@
-<p>main works!</p>
+<main class="dashboard-container">
+
+  <!-- En-tête -->
+  <header class="dashboard-header">
+    <h1>Dashboard</h1>
+
+    <div class="filters">
+      <label>Période :</label>
+      <select (change)="onPeriodeChange($event)">
+        <option value="daily">Quotidien</option>
+        <option value="weekly" selected>Hebdomadaire</option>
+        <option value="monthly">Mensuel</option>
+      </select>
+
+      <label>Catégorie :</label>
+      <select (change)="onCategorieChange($event)">
+        <option>Toutes</option>
+        <option>Pains</option>
+        <option>Pâtisseries</option>
+        <option>Boissons</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Statistiques principales -->
+  <section class="stats">
+    <div class="stat-card">
+      <p class="label">Revenu total</p>
+      <h2>{{ stats.revenu_total | number:'1.2-2' }} FCFA</h2>
+    </div>
+    <div class="stat-card">
+      <p class="label">Commandes totales</p>
+      <h2>{{ stats.commandes_totales }}</h2>
+    </div>
+    <div class="stat-card">
+      <p class="label">Valeur moyenne</p>
+      <h2>{{ stats.valeur_moyenne | number:'1.2-2' }} FCFA</h2>
+    </div>
+    <div class="stat-card">
+      <p class="label">Nouveaux clients</p>
+      <h2>{{ stats.nouveaux_clients }}</h2>
+    </div>
+  </section>
+
+  <!-- Tendances des ventes -->
+  <section class="sales-trends">
+    <h3>Tendances des ventes</h3>
+    <div class="card">
+      <canvas id="salesChart"></canvas>
+    </div>
+  </section>
+
+  <!-- Produits et dépenses -->
+  <section class="bottom-grid">
+
+    <div class="card">
+      <h3>Produits les plus vendus</h3>
+      <div class="product" *ngFor="let p of stats.produits_vendus">
+        <span>{{ p.produit_id || 'Produit inconnu' }}</span>
+        <div class="bar">
+          <div class="progress" [style.width.%]="(p.quantite_vendue / stats.produits_vendus[0].quantite_vendue) * 100"></div>
+        </div>
+        <span class="value">{{ p.quantite_vendue }} unités</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Dépenses clients</h3>
+      <div class="spending" *ngFor="let d of stats.depenses_clients">
+        <p><strong>{{ d.total | number:'1.2-2' }} FCFA</strong><br><span>{{ d.range }}</span></p>
+      </div>
+    </div>
+
+  </section>
+
+</main>

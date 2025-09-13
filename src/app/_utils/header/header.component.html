@@ -1,26 +1,26 @@
+
+<!--
 <div class="header">
    <div class="container_header">
         <div class="header_content">
-            <!-- LOGO -->
             <div class="header_logo">
                 <img src="../../../assets/logo.png" alt="Logo NdewePain">
             </div>
 
-            <!-- HAMBURGER (mobile) -->
             <div class="hamburger" (click)="toggleMenu()">
                 <i class="fa fa-bars"></i>
             </div>
 
-            <!-- MENU -->
             <div class="header_menu" [class.active]="menuOpen">
                 <ul class="header_menu_list">
-                    <li><a routerLink="home">Home</a></li>
+                    <li><a routerLink="/">Home</a></li>
                     <li><a routerLink="/menu">Menu</a></li>
                     <li><a routerLink="/promotion">Promotion</a></li>
                     <li><a routerLink="/services">Services</a></li>
                     <li><a routerLink="/contact">Contact</a></li>
                     <li><a routerLink="/blog">Blog</a></li>
                     <li><a routerLink="/gallery">Gallery</a></li>
+                    <li><a routerLink="/chechout/mescommandes">Mes commandes</a></li>
                     <li class="header_menu_list_cart">
                         <i routerLink="/chechout/support" class="fa fa-envelope"></i>
                     </li>
@@ -35,3 +35,55 @@
         </div>
   </div>
 </div>
+
+-->
+
+
+<div class="header">
+    <div class="container_header">
+      <div class="header_content">
+        <div class="header_logo">
+          <img src="../../../assets/logo.png" alt="Logo NdewePain">
+        </div>
+  
+        <div class="hamburger" (click)="toggleMenu()">
+          <i class="fa fa-bars"></i>
+        </div>
+  
+        <div class="header_menu" [class.active]="menuOpen">
+          <ul class="header_menu_list">
+  
+            <!-- VISITEUR -->
+            <ng-container *ngIf="!isAuthenticated(); else userMenu">
+              <li><a routerLink="/">Accueil</a></li>
+              <li><a routerLink="/menu">Menu</a></li>
+              <li><a routerLink="/promotion">Promotion</a></li>
+             <!-- <li><a routerLink="/services">Services</a></li>
+              <li><a routerLink="/contact">Contact</a></li>
+              <li><a routerLink="/blog">Blog</a></li> -->
+              <li><a routerLink="/gallery">Galerie</a></li>
+              <li class="header_menu_list_login"><a routerLink="/auth/login">Se connecter</a></li>
+            </ng-container>
+  
+            <!-- UTILISATEUR CONNECTÉ -->
+            <ng-template #userMenu>
+              <li><a routerLink="/">Accueil</a></li>
+              <li><a routerLink="/menu">Menu</a></li>
+              <li><a routerLink="/promotion">Promotion</a></li>
+              <li><a routerLink="/chechout/mescommandes">Mes commandes</a></li>
+              <li><a routerLink="/chechout/support"><i class="fa fa-envelope"></i></a></li>
+              <li><a routerLink="/chechout/cart"><i class="fa fa-shopping-cart"></i></a></li>
+              <li *ngIf="isAdmin()"><a routerLink="/dashboard">Admin</a></li>
+              <li class="header_menu_list_login"><a (click)="logout()">Se déconnecter</a></li>
+              <li class="header_menu_list_profile" routerLink="/profil" >
+                <img [src]="user?.profile" alt="Profil" class="avatar">
+                <span>{{ user?.nom }}</span>
+              </li>
+            </ng-template>
+  
+          </ul>
+        </div>
+      </div>
+    </div>
+</div>
+  

@@ -1,0 +1,126 @@
+.adresse-container {
+  max-width: 700px;
+  margin: auto;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.header {
+    padding-bottom: 50px;
+}
+
+.titre {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.tre h1 {
+  font-size: 2rem;
+  color: #d35400;
+}
+
+.tre p {
+  color: #555;
+  margin-top: 5px;
+}
+
+.bte button {
+  background: #f3f3f3;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.bte button:hover {
+  background: #d35400;
+  color: #fff;
+}
+
+.adresses {
+  background: #fff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.group-form {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.group-form label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.group-form input,
+.group-form select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border 0.3s;
+}
+
+.group-form input:focus,
+.group-form select:focus {
+  border: 1px solid #d35400;
+  outline: none;
+}
+
+.checkbox {
+  flex-direction: row;
+  align-items: center;
+}
+
+.group-btn {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.group-btn button {
+  background: linear-gradient(135deg, #d35400, #a84300);
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.group-btn button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(211,84,0,0.3);
+}
+
+.message {
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.message.success {
+  background: #eafbea;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.message.error {
+  background: #fdecea;
+  color: #c62828;
+  border: 1px solid #f5c6cb;
+}
+
+.error {
+  font-size: 0.8rem;
+  color: #c62828;
+  margin-top: 4px;
+}

@@ -2,9 +2,9 @@
   <app-header></app-header>
 </div>
 <div class="order">
-  <main class="tracking-container">
+  <main class="tracking-container" *ngIf="commande">
     <h1>Suivi de commande</h1>
-    <p class="order-id">Commande #{{ orderId }}</p>
+    <p class="order-id">Commande #{{ commande.code_commande }}</p>
 
     <div class="timeline">
       <!-- Barre de progression -->
@@ -21,7 +21,12 @@
     </div>
 
     <div class="sy">
-      <button type="button" class="btn-support">Contacter le support</button>
+      <button type="button" class="btn-support">
+        Contacter le support
+      </button>
+      <button type="button" class="btn-support" (click)="mes()">
+        Mes Commandes
+      </button>
     </div>
   </main>
 </div>

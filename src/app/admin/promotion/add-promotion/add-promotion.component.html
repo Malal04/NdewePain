@@ -1,0 +1,101 @@
+<main class="promotion-form-container">
+  <header class="form-header">
+    <h2><i class="fa fa-gift"></i> Nouvelle promotion</h2>
+    <p>Ajoutez une nouvelle offre spéciale pour vos clients.</p>
+  </header>
+
+  <!-- Messages -->
+  <p class="message success" *ngIf="message">
+    <i class="fa fa-check-circle"></i> {{ message }}
+  </p>
+  <p class="message error" *ngIf="error">
+    <i class="fa fa-exclamation-triangle"></i> {{ error }}
+  </p>
+
+  <form [formGroup]="promotionForm" (ngSubmit)="onSubmit()">
+    <!-- Nom -->
+    <div class="form-group">
+      <label for="nom">Nom *</label>
+      <input id="nom" type="text" formControlName="nom" placeholder="Nom de la promotion" />
+      <small class="error" *ngIf="f['nom'].touched && f['nom'].invalid">
+        Le nom est obligatoire (max 190 caractères).
+      </small>
+    </div>
+
+    <!-- Description -->
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" formControlName="description" rows="3" placeholder="Décrivez brièvement la promotion..."></textarea>
+    </div>
+
+    <!-- Type remise + valeur -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="type_remise">Type de remise *</label>
+        <select id="type_remise" formControlName="type_remise">
+          <option value="">-- Sélectionner --</option>
+          <option value="pourcentage">Pourcentage (%)</option>
+          <option value="montant">Montant fixe (CFA)</option>
+          <option value="bogo">2 pour 1 (BOGO)</option>
+          <option value="gratuit_livraison">Livraison gratuite</option>
+        </select>
+        <small class="error" *ngIf="f['type_remise'].touched && f['type_remise'].invalid">
+          Le type de remise est obligatoire.
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="valeur_remise">Valeur remise</label>
+        <input id="valeur_remise" type="number" formControlName="valeur_remise" placeholder="Ex: 10 ou 1000" />
+      </div>
+    </div>
+
+    <!-- Code promo -->
+    <div class="form-group">
+      <label for="code_promo">Code promo</label>
+      <input id="code_promo" type="text" formControlName="code_promo" placeholder="Ex: PROMO2025" />
+    </div>
+
+    <!-- Dates -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="date_debut">Date début</label>
+        <input id="date_debut" type="date" formControlName="date_debut" />
+      </div>
+      <div class="form-group">
+        <label for="date_fin">Date fin</label>
+        <input id="date_fin" type="date" formControlName="date_fin" />
+      </div>
+    </div>
+
+    <!-- Statut
+    <div class="form-group">
+      <label for="status">Statut</label>
+      <select id="status" formControlName="status">
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+      </select>
+    </div>  -->
+
+    <!-- Produits associés -->
+    <div class="form-group">
+      <label>Produits concernés</label>
+      <div class="checkbox-list">
+        <label *ngFor="let produit of produits" class="checkbox-item">
+          <input type="checkbox" [value]="produit.id" (change)="toggleProduit(produit.id, $event)" />
+          <span>{{ produit.nom }}</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Boutons -->
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit" [disabled]="promotionForm.invalid">
+        <i class="fa fa-save"></i> Sauvegarder
+      </button>
+      <button class="btn btn-secondary" type="button" (click)="cancel()">
+        <i class="fa fa-times"></i> Annuler
+      </button>
+    </div>
+  </form>
+</main>

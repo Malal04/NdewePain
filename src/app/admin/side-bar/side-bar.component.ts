@@ -37,28 +37,12 @@ export class SideBarComponent {
 
   ngOnInit(): void {
     this.checkAdmin();
-    this.getUserSession();
+  
   }
 
   checkAdmin(): void {
     this.isAdmin = this.tokenService.isAdmin(); 
-  }
-
-  getUserSession(): void {
-    // this.userService.checkSession().subscribe({
-    //   next: (response) => {
-    //     this.userResponse = response;
-    //     this.canManageUsers = this.userResponse.role === Role.ADMIN || this.userResponse.role === Role.SUPER_ADMIN;
-    //     this.canBar = this.userResponse.role === Role.AGENT_BAR ||  this.userResponse.role === Role.ADMIN || this.userResponse.role === Role.SUPER_ADMIN;
-    //     this.canRestaurant = this.userResponse.role === Role.AGENT_RESTAURANT || this.userResponse.role === Role.ADMIN || this.userResponse.role === Role.SUPER_ADMIN;
-    //     this.canAccueil = this.userResponse.role === Role.AGENT_ACCUEIL || this.userResponse.role === Role.ADMIN || this.userResponse.role === Role.SUPER_ADMIN;
-    //   },
-    //   error: (err) => {
-    //     this.message = 'Une erreur est survenue lors de la vérification de la session.';
-    //     setTimeout(() => this.message = '', 3000); 
-    //   }
-    // });
-  }
+  } 
 
   onLogout() {
     this.tokenService.logout();

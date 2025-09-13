@@ -1,0 +1,107 @@
+<main class="promotions-container">
+  <!-- En-tête -->
+  <header class="header">
+    <div class="header-text">
+      <h1><i class="fa fa-gift"></i> Promotions</h1>
+      <p>Gérez vos offres spéciales et fidélisez vos clients.</p>
+    </div>
+    <button class="btn btn-primary" (click)="addPromotion()">
+      <i class="fa fa-plus-circle"></i> Nouvelle promotion
+    </button>
+  </header>
+
+  <!-- Loader -->
+  <div class="loader" *ngIf="loading">
+    <i class="fa fa-spinner fa-spin"></i> Chargement en cours...
+  </div>
+
+  <!-- Messages -->
+  <p class="message success" *ngIf="message && !error">
+    <i class="fa fa-check-circle"></i> {{ message }}
+  </p>
+  <p class="message error" *ngIf="error">
+    <i class="fa fa-exclamation-triangle"></i> {{ error }}
+  </p>
+
+  <!-- Tableau -->
+  <div class="table-container" *ngIf="!loading && promotions.length > 0; else noData">
+    <table>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Description</th>
+          <th>Code promo</th>
+          <th>Type</th>
+          <th>Valeur</th>
+          <th>Validité</th>
+          <th>Statut</th>
+          <th class="actions-col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let promo of promotions">
+          <td>{{ promo.nom }}</td>
+          <td class="desc">{{ promo.description }}</td>
+          <td>{{ promo.code_promo }}</td>
+          <td>
+            <span *ngIf="promo.type_remise === 'pourcentage'">Pourcentage</span>
+            <span *ngIf="promo.type_remise === 'montant'">Montant fixe</span>
+            <span *ngIf="promo.type_remise === 'bogo'">2 pour 1</span>
+            <span *ngIf="promo.type_remise === 'gratuit_livraison'">Livraison gratuite</span>
+          </td>
+          <td>
+            <span *ngIf="promo.type_remise === 'pourcentage'">{{ promo.valeur_remise }} %</span>
+            <span *ngIf="promo.type_remise === 'montant'">{{ promo.valeur_remise }} CFA</span>
+            <span *ngIf="promo.type_remise === 'bogo'">BOGO</span>
+            <span *ngIf="promo.type_remise === 'gratuit_livraison'">—</span>
+          </td>
+          <td>
+            <span *ngIf="promo.date_debut && promo.date_fin">
+              {{ promo.date_debut | date:'dd/MM/yyyy' }} - {{ promo.date_fin | date:'dd/MM/yyyy' }}
+            </span>
+            <span *ngIf="!promo.date_debut && !promo.date_fin">Illimitée</span>
+          </td>
+          <td>
+            <span
+              class="badge"
+              [ngClass]="{
+                'badge-actif': promo.status === 'active',
+                'badge-inactif': promo.status === 'inactive'
+              }"
+              (click)="changeStatus(promo)"
+              title="Cliquer pour changer le statut"
+            >
+              {{ promo.status === 'active' ? 'Active' : 'Inactive' }}
+            </span>
+          </td>
+          <td class="actions">
+            <a class="edit-link" (click)="editPromotion(promo.id)">
+              <i class="fa fa-edit"></i> Modifier
+            </a>
+            <a class="delete-link" (click)="deletePromotion(promo.id)">
+              <i class="fa fa-trash"></i> Supprimer
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <button class="btn-page" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+        <i class="fa fa-chevron-left"></i> Précédent
+      </button>
+      <span>Page {{ currentPage }} / {{ totalPages }}</span>
+      <button class="btn-page" (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">
+        Suivant <i class="fa fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Pas de données -->
+  <ng-template #noData>
+    <p class="empty">
+      <i class="fa fa-info-circle"></i> Aucune promotion disponible.
+    </p>
+  </ng-template>
+</main>

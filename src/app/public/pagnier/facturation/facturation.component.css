@@ -1,0 +1,107 @@
+.facture-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 25px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #333;
+}
+
+.facture-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid #e67e22;
+  padding-bottom: 40px;
+  margin-bottom: 20px;
+}
+
+.logo h2 {
+  color: #e67e22;
+  margin: 0;
+}
+
+.infos-facture h1 {
+  color: #e67e22;
+  margin: 0;
+  font-size: 26px;
+}
+
+.client {
+  margin-bottom: 20px;
+}
+
+.lignes {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.lignes th {
+  background: #f4f4f4;
+  text-align: left;
+  padding: 10px;
+  font-weight: 600;
+}
+
+.lignes td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.resume {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.totaux p {
+  margin: 5px 0;
+}
+
+.totaux .grand-total {
+  font-size: 20px;
+  font-weight: bold;
+  color: #e67e22;
+}
+
+.conditions {
+  border-top: 2px solid #eee;
+  padding-top: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 20px
+}
+
+.actions button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.actions button:first-child {
+  background: #e67e22;
+  color: #fff;
+}
+
+.actions button:last-child {
+  background: #555;
+  color: #fff;
+}
+
+@media print {
+  .actions {
+    display: none !important;
+  }
+}

@@ -1,0 +1,61 @@
+<main class="rapports-container">
+  <div class="rapports">
+    <!-- En-tête -->
+    <header class="headers">
+      <h1>Rapports Financiers Détaillés</h1>
+      <p>Analysez la performance financière grâce à des graphiques et des tableaux clairs.</p>
+    </header>
+
+    <!-- Onglets -->
+    <div class="tabs">
+      <button class="tab" [class.active]="periode === 'mensuel'" (click)="changerPeriode('mensuel')">Mensuel</button>
+      <button class="tab" [class.active]="periode === 'trimestriel'" (click)="changerPeriode('trimestriel')">Trimestriel</button>
+      <button class="tab" [class.active]="periode === 'annuel'" (click)="changerPeriode('annuel')">Annuel</button>
+    </div>
+
+    <!-- Graphiques -->
+    <section class="charts">
+      <div class="card">
+        <h2>Tendance des Revenus</h2>
+        <p class="amount">{{ stats.revenu_total | number:'1.0-0' }} FCFA</p>
+        <canvas baseChart 
+                [data]="revenusChartData" 
+                [options]="revenusChartOptions" 
+                chartType="line">
+        </canvas>
+      </div>
+
+      <div class="card">
+        <h2>Répartition des Dépenses</h2>
+        <canvas baseChart 
+                [data]="depensesChartData" 
+                [options]="depensesChartOptions" 
+                chartType="bar">
+        </canvas>
+      </div>
+    </section>
+
+    <!-- Tableau Produits -->
+    <section>
+      <h2>Produits les plus vendus</h2>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Produit</th>
+              <th>Unités Vendues</th>
+              <th>Revenus</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of produits">
+              <td>{{ p.nom }}</td>
+              <td>{{ p.quantite_vendue }}</td>
+              <td>{{ p.revenu | number:'1.0-0' }} FCFA</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</main>

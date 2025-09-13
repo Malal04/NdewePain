@@ -1,0 +1,82 @@
+<main class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>Vue d’ensemble des performances</h1>
+    <p>Analysez les indicateurs clés pour comprendre les performances de votre boulangerie et le comportement de vos clients.</p>
+
+    <!-- Onglets -->
+    <div class="tabs">
+      <button class="tab" 
+              [class.active]="periode === 'hebdomadaire'" 
+              (click)="changerPeriode('hebdomadaire')">Hebdomadaire</button>
+      <button class="tab" 
+              [class.active]="periode === 'mensuel'" 
+              (click)="changerPeriode('mensuel')">Mensuel</button>
+      <button class="tab" 
+              [class.active]="periode === 'annuel'" 
+              (click)="changerPeriode('annuel')">Annuel</button>
+    </div>
+  </header>
+
+  <!-- Cartes principales -->
+  <section class="cards-grid">
+    <!-- 📈 Ventes -->
+    <div class="card">
+      <div class="card-header">
+        <h2>Tendance des Ventes</h2>
+        <span class="growth positif">+15%</span>
+      </div>
+      <p class="value">12 500 €</p>
+      <canvas baseChart 
+              [data]="ventesChartData" 
+              [options]="ventesChartOptions" 
+              chartType="line">
+      </canvas>
+    </div>
+
+    <!-- 🥖 Produits les plus vendus -->
+    <div class="card">
+      <div class="card-header">
+        <h2>Produits les plus vendus</h2>
+        <span class="growth negatif">-5%</span>
+      </div>
+      <p class="value">1 500 unités</p>
+      <div class="mini-bars">
+        <div><span>Croissants</span><div class="progress"><div style="width:80%"></div></div></div>
+        <div><span>Pain au levain</span><div class="progress"><div style="width:65%"></div></div></div>
+        <div><span>Muffins</span><div class="progress"><div style="width:50%"></div></div></div>
+        <div><span>Gâteaux</span><div class="progress"><div style="width:40%"></div></div></div>
+        <div><span>Cookies</span><div class="progress"><div style="width:30%"></div></div></div>
+      </div>
+    </div>
+
+    <!-- 👥 Démographie clients -->
+    <div class="card">
+      <div class="card-header">
+        <h2>Démographie des Clients</h2>
+        <span class="growth positif">+10% Nouv.</span>
+      </div>
+      <p class="value">60% Femmes</p>
+      <div class="mini-bars">
+        <div><span>25–34</span><div class="progress"><div style="width:70%"></div></div></div>
+        <div><span>35–44</span><div class="progress"><div style="width:85%"></div></div></div>
+        <div><span>45–54</span><div class="progress"><div style="width:50%"></div></div></div>
+        <div><span>55+</span><div class="progress"><div style="width:35%"></div></div></div>
+      </div>
+    </div>
+
+    <!-- 📦 Fréquence des commandes -->
+    <div class="card">
+      <div class="card-header">
+        <h2>Fréquence des Commandes</h2>
+        <span class="growth positif">+5%</span>
+      </div>
+      <p class="value">2.5 commandes/mois</p>
+      <div class="mini-bars">
+        <div><span>1 commande</span><div class="progress"><div style="width:50%"></div></div></div>
+        <div><span>2 commandes</span><div class="progress"><div style="width:70%"></div></div></div>
+        <div><span>3 commandes</span><div class="progress"><div style="width:40%"></div></div></div>
+        <div><span>4+ commandes</span><div class="progress"><div style="width:60%"></div></div></div>
+      </div>
+    </div>
+  </section>
+</main>

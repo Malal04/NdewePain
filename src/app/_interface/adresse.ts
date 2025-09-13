@@ -11,6 +11,7 @@ export interface Adresse {
     type: AdresseType;
     mode_livraison: AdresseModeLivraison;
     created_at: Date;
+    message: string;
 }
 
 

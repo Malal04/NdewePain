@@ -1,109 +1,93 @@
 <header class="profil-header">
-    <app-header></app-header>
+  <app-header></app-header>
 </header>
 
 <div class="profil">
-    <main class="profile-container">
-  
-        <!-- En-tête du profil -->
-        <section class="profile-header">
-          <div class="user-info">
-            <img src="img/user.jpg" alt="Photo de profil utilisateur" class="avatar">
-            <div>
-              <h2>Sophia Bennett</h2>
-              <p class="email">sophia.bennettgmail.com</p>
-            </div>
+  <main class="profile-container">
+    <!-- Loading / Erreur -->
+    <div *ngIf="loading">Chargement...</div>
+    <div *ngIf="error" class="error">{{ error }}</div>
+
+    <ng-container *ngIf="!loading && user">
+      <!-- En-tête du profil -->
+      <section class="profile-header">
+        <div class="user-info">
+          <img src="img/user.jpg" alt="Photo de profil utilisateur" class="avatar">
+          <div>
+            <h2>{{ user.nom }}</h2>
+            <p class="email">{{ user.email }}</p>
           </div>
-          <div class="actions">
-            <button type="submit" class="btn update" (click)="updateProfile()">Mettre à jour</button>
-            <button type="submit" class="btn logout">Déconnexion</button>
-          </div>
-        </section>
-      
-        <div class="profile-content">
-          
-          <!-- Historique des commandes -->
-          <section class="order-history card">
-            <h3>Historique des commandes</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>Commande #</th>
-                  <th>Date</th>
-                  <th>Total</th>
-                  <th>Statut</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>#12345</td>
-                  <td>15 Juillet 2023</td>
-                  <td>45,00 €</td>
-                  <td><span class="status delivered">Livrée</span></td>
-                </tr>
-                <tr>
-                  <td>#12346</td>
-                  <td>20 Août 2023</td>
-                  <td>30,00 €</td>
-                  <td><span class="status shipped">Expédiée</span></td>
-                </tr>
-                <tr>
-                  <td>#12347</td>
-                  <td>5 Septembre 2023</td>
-                  <td>60,00 €</td>
-                  <td><span class="status processing">En cours</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-      
-          <!-- Barre latérale -->
-          <aside class="sidebar">
-      
-            <!-- Préférences de livraison -->
-            <div class="card">
-              <h3>Adresses de livraison</h3>
-              <div class="address active">
-                <strong>Domicile</strong>
-                <p>123 Rue Artisan, Bakington, BK 12345</p>
-              </div>
-              <div class="address">
-                <strong>Bureau</strong>
-                <p>456 Boulevard Corporate, Bureau 200, Workville, WV 67890</p>
-              </div>
-              <button type="submit" class="btn-outline">
-                <i class="ph ph-plus"></i> Ajouter une nouvelle adresse
-              </button>
-            </div>
-      
-            <!-- Préférences alimentaires -->
-            <div class="card">
-              <h3>Préférences alimentaires</h3>
-              <div class="tags">
-                <span class="tag nut">Fruits à coque</span>
-                <span class="tag dairy">Produits laitiers</span>
-                <span class="tag gluten">Gluten</span>
-              </div>
-              <input type="text" placeholder="Ajouter une autre allergie...">
-            </div>
-      
-            <!-- Moyens de paiement -->
-            <div class="card">
-              <h3>Moyens de paiement</h3>
-              <div class="payment">
-                <i class="ph ph-credit-card"></i> Carte Visa se terminant par 1234
-              </div>
-              <div class="payment">
-                <i class="ph ph-paypal-logo"></i> PayPal
-              </div>
-              <button type="submit" class="btn-outline">
-                <i class="ph ph-plus"></i> Ajouter un mode de paiement
-              </button>
-            </div>
-          </aside>
         </div>
-    </main>
-    <div class="profil-footer">
-        <app-footer></app-footer>
-    </div> 
+        <div class="actions">
+          <button type="button" class="btn update" (click)="updateProfile(user.id)">Mettre à jour</button>
+          <button type="button" class="btn logout" (click)="logout()">Déconnexion</button>
+        </div>
+      </section>
+
+      <div class="profile-content">
+        <!-- Historique des commandes -->
+        <section class="order-history card">
+          <h3>Historique des commandes</h3>
+          <table *ngIf="commandes.length > 0; else noCommande">
+            <thead>
+              <tr>
+                <th>Commande #</th>
+                <th>Date</th>
+                <th>Total</th>
+                <th>Statut</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cmd of commandes">
+                <td>#{{ cmd.code_commande }}</td>
+                <td>{{ cmd.created_at | date:'dd/MM/yyyy' }}</td>
+                <td>{{ cmd.total }} FCFA</td>
+                <td>
+                  <span class="status" [ngClass]="cmd.statut_commande">
+                   {{ cmd.statut_commande }}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <ng-template #noCommande>
+            <p>Aucune commande trouvée.</p>
+          </ng-template>
+        </section>
+
+        <!-- Barre latérale -->
+        <aside class="sidebar">
+          <!-- Préférences de livraison -->
+          <div class="card">
+            <h3>Adresses de livraison</h3>
+            <div *ngFor="let adr of adresses" class="address" [ngClass]="{'active': adr.est_principale}">
+              <strong>{{ adr.ligne_adresse }}</strong>
+              <p>{{ adr.pays}}, {{ adr.ville }} , {{ adr.ligne_adresse }}, {{ adr.code_postal }}</p>
+            </div>
+            <button type="button" class="btn-outline" (click)="addprofil()">
+              <i class="ph ph-plus"></i> Ajouter une nouvelle adresse
+            </button>
+          </div>
+
+          <!-- Moyens de paiement -->
+          <div class="card">
+            <h3>Moyens de paiement</h3>
+            <div class="payment">
+              <i class="ph ph-credit-card"></i> Carte 
+            </div>
+            <div class="payment">
+              <i class="ph ph-paypal-logo"></i> Wave
+            </div>
+            <button type="button" class="btn-outline">
+              <i class="ph ph-plus"></i> Ajouter un mode de paiement
+            </button>
+          </div>
+        </aside>
+      </div>
+    </ng-container>
+  </main>
+
+  <div class="profil-footer">
+    <app-footer></app-footer>
+  </div>
 </div>

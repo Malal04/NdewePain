@@ -1,44 +1,35 @@
 <header class="header-menu">
-    <app-header></app-header>
+  <app-header></app-header>
 </header>
+
 <div class="checkout">
   <main class="checkout-container">
     <!-- Colonne gauche -->
     <section class="order-summary">
       <h1>Passer la commande</h1>
       <h2>Résumé de votre commande</h2>
-
-      <!-- Produits -->
-      <div class="order-item">
-        <img src="../../../../assets/painBlog.png" alt="Pain au Levain">
-        <div class="item-info">
-          <h3>Pain au Levain</h3>
-          <p>Quantité : 2</p>
-          <small>Option : Croûte extra croustillante</small>
-        </div>
-        <div class="item-price">6 500 FCFA <br><span>3 250 FCFA / pièce</span></div>
+      <div class="cart-actions">
+        <button type="button" class="btn-clear" (click)="clearCart()">
+          <i class="fa fa-trash"></i> Vider le panier
+        </button>
       </div>
 
-      <div class="order-item">
-        <img src="../../../../assets/painBlog.png" alt="Croissant">
+      <!-- Produits dynamiques -->
+      <div class="order-item" *ngFor="let item of cart?.data?.items">
+        <img [src]="item.photo_url || '../../../../assets/painBlog.png'" [alt]="item.nom_produit">
         <div class="item-info">
-          <h3>Croissant</h3>
-          <p>Quantité : 1</p>
+          <h3>{{ item.nom_produit }}</h3>
+          <p>Quantité : {{ item.quantite }}</p>
+          <small *ngIf="item.personnalisation">Option : {{ item.personnalisation }}</small>
         </div>
-        <div class="item-price">1 500 FCFA</div>
+        <div class="item-price">
+          {{ item.total | number:'1.0-0' }} FCFA
+          <br>
+          <span>{{ item.prix_unitaire | number:'1.0-0' }} FCFA / pièce</span>
+        </div>
       </div>
 
-      <div class="order-item">
-        <img src="../../../../assets/painBlog.png" alt="Gâteau au Chocolat">
-        <div class="item-info">
-          <h3>Gâteau au Chocolat</h3>
-          <p>Quantité : 1</p>
-          <small>Option : Message « Joyeux Anniversaire ! »</small>
-        </div>
-        <div class="item-price">12 000 FCFA</div>
-      </div>
-
-      <!-- Livraison & Pickup -->
+      <!-- Livraison & Pickup
       <h2>Livraison ou Retrait</h2>
       <div class="delivery-options">
         <label class="option selected">
@@ -47,7 +38,7 @@
             <h4>Livraison</h4>
             <p>Recevez vos produits directement à domicile.</p>
           </div>
-          <span class="price">2 000 FCFA</span>
+          <span class="price">2 500 FCFA</span>
         </label>
 
         <label class="option">
@@ -58,7 +49,34 @@
           </div>
           <span class="price">Gratuit</span>
         </label>
+      </div>  -->
+
+      <!-- Livraison & Pickup -->
+      <h2>Livraison ou Retrait</h2>
+      <div class="delivery-options">
+        <label class="option">
+          <input type="radio" name="delivery" value="livraison"
+                [checked]="cart?.data?.mode_livraison === 'livraison'"
+                (change)="choisirLivraison('livraison')">
+          <div>
+            <h4>Livraison</h4>
+            <p>Recevez vos produits directement à domicile.</p>
+          </div>
+          <span class="price">2 500 FCFA</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="delivery" value="retrait"
+                [checked]="cart?.data?.mode_livraison === 'retrait'"
+                (change)="choisirLivraison('retrait')">
+          <div>
+            <h4>Retrait en Boulangerie</h4>
+            <p>Récupérez votre commande sur place.</p>
+          </div>
+          <span class="price">Gratuit</span>
+        </label>
       </div>
+
 
       <!-- Créneau horaire -->
       <h2>Choisissez un créneau</h2>
@@ -67,6 +85,7 @@
         <option>Aujourd’hui, 16h00 - 17h00</option>
         <option>Demain, 10h00 - 11h00</option>
       </select>
+      
     </section>
 
     <!-- Colonne droite -->
@@ -74,40 +93,51 @@
       <h2>Total</h2>
       <div class="summary-row">
         <span>Sous-total</span>
-        <span>20 000 FCFA</span>
+        <span>{{ cart?.meta?.totals?.sous_total | number:'1.0-0' }} FCFA</span>
       </div>
       <div class="summary-row">
         <span>Livraison</span>
-        <span>2 000 FCFA</span>
+        <span>{{ cart?.meta?.totals?.frais_livraison | number:'1.0-0' }} FCFA</span>
       </div>
-      <div class="summary-row discount">
+      <div class="summary-row discount" >
         <span>Réduction</span>
-        <span>- 1 500 FCFA</span>
+        <span>- {{ cart?.meta?.totals?.remise | number:'1.0-0' }} FCFA</span>
       </div>
       <div class="summary-row total">
         <span>Total à payer</span>
-        <span>20 500 FCFA</span>
+        <span>{{ cart?.meta?.totals?.total | number:'1.0-0' }} FCFA</span>
       </div>
 
       <!-- Code promo -->
       <div class="discount-code">
-        <input type="text" placeholder="Code promo">
-        <button type="submit">Appliquer</button>
+        <input type="text" placeholder="Code promo" [(ngModel)]="promo_code">
+        <button type="submit" (click)="promo(promo_code)">Appliquer</button>
       </div>
 
-      <div class="pay"> 
-        <button type="submit" class="btn-pay" (click)="onSubmit()">Confirmer et Payer</button>
+      <!-- Paiement -->
+      <div class="pay">
+        <button type="submit" class="btn-pay" (click)="onSubmit()">Commandez</button>
       </div>
 
-      <!-- Loader (caché par défaut) -->
-        <div class="loader" id="payment-loader">
-            <div class="spinner"></div>
-            <p>Traitement du paiement...</p>
-        </div>
-  
+      <!-- Loader -->
+      <div class="loader" id="payment-loader">
+        <div class="spinner"></div>
+        <p>Traitement du paiement...</p>
+      </div>
+
     </aside>
+
   </main>
+
+  <div *ngIf="message" class="alert success">
+    {{ message }}
+  </div>
+  <div *ngIf="error" class="alert error">
+    {{ error }}
+  </div>
+
 </div>
+
 <footer class="footer-menu">
-    <app-footer></app-footer>
+  <app-footer></app-footer>
 </footer>

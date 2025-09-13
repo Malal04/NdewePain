@@ -21,6 +21,17 @@ import { HistoryStockComponent } from './inventoty/stock/history-stock/history-s
 import { IndexCommandeComponent } from './inventoty/commande/index-commande/index-commande.component';
 import { AddCommandeComponent } from './inventoty/commande/add-commande/add-commande.component';
 import { EditCommandeComponent } from './inventoty/commande/edit-commande/edit-commande.component';
+import { AddPromotionComponent } from './promotion/add-promotion/add-promotion.component';
+import { IndexPromotionComponent } from './promotion/index-promotion/index-promotion.component';
+import { EditPromotionComponent } from './promotion/edit-promotion/edit-promotion.component';
+import { IndexOrdreComponent } from './ordre/index-ordre/index-ordre.component';
+import { AddOrdreComponent } from './ordre/add-ordre/add-ordre.component';
+import { IndexEmployerComponent } from './employer/index-employer/index-employer.component';
+import { AddEmployerComponent } from './employer/add-employer/add-employer.component';
+import { MesEmployerComponent } from './employer/mes-employer/mes-employer.component';
+import { RapportsComponent } from './rapports/rapports.component';
+import { PerformancesComponent } from './performances/performances.component';
+import { ProductionComponent } from './production/production.component';
 
 const routes: Routes = [
   {
@@ -30,6 +41,18 @@ const routes: Routes = [
       },
       { 
         path: 'menu', component: MainComponent
+      },
+      // Rapports
+      {
+        path: 'rapports', component: RapportsComponent
+      },
+      // Performances
+      {
+        path: 'performances', component: PerformancesComponent
+      },
+      // Production
+      {
+        path: 'production', component: ProductionComponent
       },
       // Produit
       {
@@ -94,7 +117,34 @@ const routes: Routes = [
       {
         path: 'edit-commande-stock/:id', component: EditCommandeComponent
       },
-      
+      // promotion 
+      {
+        path: 'add-promotion', component: AddPromotionComponent
+      },
+      {
+        path: 'index-promotion', component: IndexPromotionComponent
+      },
+      {
+        path: 'edit-promotion/:id', component: EditPromotionComponent
+      },
+      // ordre commande
+      {
+        path: 'index-ordre', component: IndexOrdreComponent
+      },
+      {
+        path: 'add-ordre/:id', component: AddOrdreComponent
+      },
+      // ordre commande
+      {
+        path: 'index-employer', component: IndexEmployerComponent
+      },
+      {
+        path: 'add-employer', component: AddEmployerComponent
+      },
+      {
+        path: 'mes-employer', component: MesEmployerComponent
+      },
+
     ]
   }
 ];

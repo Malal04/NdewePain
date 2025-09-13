@@ -129,3 +129,18 @@
     display: block;
   }
 }
+
+.header_menu_list_profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.header_menu_list_profile .avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}

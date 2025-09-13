@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiResponse, Envi, PaginatedResponse } from '../_interface/envi';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Produit, ProduitDto } from '../_interface/produit';
+import { Produit, ProduitDto, ProduitResponse } from '../_interface/produit';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +44,10 @@ export class ProduitService {
 
   getById(id: number): Observable<ApiResponse<Produit>> {
     return this.http.get<ApiResponse<Produit>>(`${this.url}/${id}`);
+  }
+
+  getProduitById(id: number): Observable<ProduitResponse> {
+    return this.http.get<ProduitResponse>(`${this.url}/${id}/detail`);
   }
 
   update(id: number, formData: FormData ): Observable<Produit> {

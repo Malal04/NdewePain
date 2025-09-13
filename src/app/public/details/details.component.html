@@ -1,82 +1,70 @@
 <header class="header-menu">
   <app-header></app-header>
 </header>
-<div class="details">
+<div class="details" *ngIf="produit">
   <!-- Fil d’Ariane -->
   <nav class="breadcrumb">
-    <a href="#">Accueil</a> /
-    <a href="#">Gâteaux</a> /
-    <span>Gâteau Chocolat Gourmand</span>
+    <a routerLink="/menu"><i class="fa fa-home"></i> Menu</a> /
+    <span>{{ produit.nom }}</span>
   </nav>
 
   <div class="product-container">
     <!-- Image principale -->
     <div class="product-image">
-      <img src="../../../assets/painBlog.png" alt="Gâteau Chocolat Gourmand">
+      <img [src]="produit.photo_url || '../../../assets/painBlog.png'" [alt]="produit.nom">
     </div>
 
     <!-- Détails -->
     <div class="product-details">
-      <h1>Gâteau Chocolat Gourmand</h1>
-      <p class="description">
-        Un gâteau signature préparé avec du cacao de qualité supérieure et une touche d’espresso, 
-        offrant une expérience riche et fondante. 
-        Recouvert d’une ganache onctueuse au chocolat et de fruits frais, 
-        c’est la pièce maîtresse idéale pour vos moments de fête.
-      </p>
+      <h1>{{ produit.nom }}</h1>
+      <p class="description">{{ produit.description }}</p>
 
       <!-- Allergènes -->
-      <h3>Informations Allergènes</h3>
-      <div class="allergens">
-        <span><i class="fa fa-exclamation-triangle"></i> Contient du Blé</span>
-        <span><i class="fa fa-exclamation-triangle"></i> Contient des Œufs</span>
-        <span><i class="fa fa-exclamation-triangle"></i> Contient du Lait</span>
-        <span><i class="fa fa-exclamation-triangle"></i> Contient du Soja</span>
+      <h3 *ngIf="produit.allergenes">Informations Allergènes</h3>
+      <div class="allergens" *ngIf="produit.allergenes?.length">
+        <span *ngFor="let allergene of produit.allergenes">
+          <i class="fa fa-exclamation-circle"></i> Contient {{ allergene }}
+        </span>
       </div>
 
-      <!-- Prix + CTA -->
+      <!-- Prix + Quantité -->
       <div class="purchase">
-        <div class="price">35 000 FCFA</div>
+        <div class="price">{{ produit.prix_unitaire | number:'1.0-0' }} FCFA</div>
         <div class="quantity">
-          <button type="submit">-</button>
-          <input type="text" value="1">
-          <button type="submit">+</button>
+          <button type="button" (click)="decreaseQty()">-</button>
+          <input type="text" [(ngModel)]="quantity" readonly>
+          <button type="button" (click)="increaseQty()">+</button>
         </div>
       </div>
 
-      <button class="btn-add">Ajouter au Panier</button>
+      <!-- CTA -->
+      <button type="button" class="btn-add" (click)="addToCart()">
+        <i class="fa fa-cart-plus"></i> Ajouter au panier
+      </button>
+
+      <p class="text-success" *ngIf="message">{{ message }}</p>
+      <p class="text-danger" *ngIf="error">{{ error }}</p>
     </div>
   </div>
 
   <!-- Produits recommandés -->
-  <section class="related">
-    <h2>Vous pourriez aussi aimer</h2>
+  <section class="related" *ngIf="related.length">
+    <h2><i class="fa fa-star"></i> Vous pourriez aussi aimer</h2>
     <div class="related-grid">
-      <div class="card">
-        <img src="../../../assets/painBlog.png" alt="Gâteau Vanille Classique">
-        <h4>Gâteau Vanille Classique</h4>
-        <p>30 000 FCFA</p>
-        <button type="submit" routerLink="/details">Voir Détails</button>
+      <div class="card" *ngFor="let r of related">
+        <img [src]="r.photo_url || '../../../assets/painBlog.png'" [alt]="r.nom">
+        <h4>{{ r.nom }}</h4>
+        <p>{{ r.prix_unitaire | number:'1.0-0' }} FCFA</p>
+        <div class="actions-card">
+          <button type="button" class="btn primary" (click)="addToCart(); $event.stopPropagation()">
+            <i class="fa fa-cart-plus"></i> Ajouter
+          </button>
+          <button type="button" class="btn secondary"  (click)="viewProduitDetails(r.categorie.id);  $event.stopPropagation()">
+            <i class="fa fa-eye"></i> Voir
+          </button>
+        </div>
       </div>
-      <div class="card">
-        <img src="../../../assets/painBlog.png" alt="Gâteau Fraise Gourmande">
-        <h4>Gâteau Fraise Gourmande</h4>
-        <p>32 000 FCFA</p>
-        <button type="submit" routerLink="/details">Voir Détails</button>
-      </div>
-      <div class="card">
-        <img src="../../../assets/painBlog.png" alt="Gâteau Citron Zesté">
-        <h4>Gâteau Citron Zesté</h4>
-        <p>28 000 FCFA</p>
-        <button type="submit" routerLink="/details">Voir Détails</button>
-      </div>
-      <div class="card">
-        <img src="../../../assets/painBlog.png" alt="Red Velvet">
-        <h4>Red Velvet</h4>
-        <p>34 000 FCFA</p>
-        <button type="submit" routerLink="/details">Voir Détails</button>
-      </div>
-    </div>
+    </div>  
   </section>
 </div>
 <footer class="footer-menu">

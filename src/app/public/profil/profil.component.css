@@ -236,3 +236,48 @@ input:focus {
     margin-top: 15px;
   }
 }
+
+/* Statuts personnalisés */
+.status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+/* En attente */
+.status.en_attente {
+  background: #fff3c4;
+  color: #8a6d00;    
+  border: 1px solid #ffe082;
+}
+
+/* Confirmée */
+.status.confirmee {
+  background: #d4f7d4; 
+  color: #2d7a2d;     
+  border: 1px solid #a5d6a7;
+}
+
+/* En cours */
+.status.en_cours {
+  background: #dce9ff;  
+  color: #2d5ab7;     
+  border: 1px solid #90caf9;
+}
+
+/* Livrée */
+.status.livree {
+  background: #c8e6c9; 
+  color: #256029;   
+  border: 1px solid #81c784;
+}
+
+/* Annulée */
+.status.annulee {
+  background: #fdecea;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
+}

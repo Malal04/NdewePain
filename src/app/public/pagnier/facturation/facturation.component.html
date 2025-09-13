@@ -1,0 +1,80 @@
+
+<header class="facture-header">
+    <app-header></app-header>
+</header>
+
+<main class="facture-container" #pdfContent *ngIf="commande">
+
+  <!-- En-tête -->
+  <header class="facture-header">
+    <div class="logo">
+      <h2>Pâtisseries Artisanales</h2>
+      <p>Le goût de l’authenticité</p>
+    </div>
+    <div class="infos-facture">
+      <h1>FACTURE</h1>
+      <p><strong>Date :</strong> {{ commande.created_at | date:'dd/MM/yyyy HH:mm' }}</p>
+      <p><strong>Code commande :</strong> {{ commande.code_commande }}</p>
+      <p><strong>Statut :</strong> {{ commande.statut_commande | titlecase }}</p>
+    </div>
+  </header>
+
+  <!-- Infos client -->
+  <section class="client">
+    <h3>Facturé à :</h3>
+    <p><strong>{{ commande.user.nom }}</strong></p>
+    <p>Email : {{ commande.user.email }}</p>
+    <p>Téléphone : {{ commande.user.phone }}</p>
+  </section>
+
+  <!-- Tableau produits -->
+  <table class="lignes">
+    <thead>
+      <tr>
+        <th>Qté</th>
+        <th>Description</th>
+        <th>Prix Unitaire</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of commande.articles">
+        <td>{{ a.quantite }}</td>
+        <td>{{ a.produit?.nom }}</td>
+        <td>{{ a.prix_unitaire | number:'1.2-2' }} FCFA</td>
+        <td>{{ a.total | number:'1.2-2' }} FCFA</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Résumé -->
+  <section class="resume">
+    <div class="methode">
+      <h4>Méthode de paiement</h4>
+      <p>{{ commande.paiement.methode | titlecase }}</p>
+      <p><strong>Statut :</strong> {{ commande.paiement.statut }}</p>
+    </div>
+    <div class="totaux">
+      <p><strong>Sous-total :</strong> {{ commande.sous_total }} FCFA</p>
+      <p><strong>Frais livraison :</strong> {{ commande.frais_livraison }} FCFA</p>
+      <p><strong>Remise :</strong> {{ commande.remise }} FCFA</p>
+      <p class="grand-total"><strong>Total :</strong> {{ commande.total }} FCFA</p>
+    </div>
+  </section>
+
+  <!-- Conditions -->
+  <footer class="conditions">
+    <h4>Conditions</h4>
+    <p>Paiement sous 7 jours. Merci de votre confiance.</p>
+  </footer>
+
+  <!-- Boutons actions -->
+  <div class="actions" >
+    <button (click)="imprimer()">📄 Télécharger PDF</button>
+    <button (click)="mescommande()">↩️ Mes commandes</button>
+  </div>
+</main>
+
+<footer>
+    <app-footer></app-footer>
+</footer>

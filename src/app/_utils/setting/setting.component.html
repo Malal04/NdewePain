@@ -6,48 +6,44 @@
     <h1>Paramètres du profil</h1>
     <p class="subtitle">Gérez vos informations personnelles et vos paramètres de sécurité.</p>
 
-    <form class="profile-card" (ngSubmit)="saveProfile()">
-      
+    <form class="profile-card" (ngSubmit)="saveProfile()" enctype="multipart/form-data">
       <!-- Avatar -->
       <div class="avatar-upload">
         <img [src]="avatarUrl" alt="Avatar utilisateur" class="avatar">
         <input type="file" id="avatar" accept="image/png, image/jpeg, image/gif" (change)="onAvatarChange($event)">
         <small>Formats acceptés : PNG, JPG, GIF (max. 10MB).</small>
       </div>
-
-      <!-- Infos personnelles -->
+    
       <label>
         Nom complet
-        <input type="text" [(ngModel)]="profile.fullname" name="fullname" required>
+        <input type="text" [(ngModel)]="profile.nom" name="nom" required>
       </label>
-
+    
       <label>
         Email
         <input type="email" [(ngModel)]="profile.email" name="email" required>
       </label>
-
+    
       <label>
         Numéro de téléphone
         <input type="tel" [(ngModel)]="profile.phone" name="phone" required>
       </label>
-
-      <label>
-        Adresse
-        <input type="text" [(ngModel)]="profile.address" name="address" required>
-      </label>
-
-      <!-- Sécurité -->
-      <h3>Sécurité</h3>
+    
       <label>
         Nouveau mot de passe
-        <input type="password" [(ngModel)]="profile.password" name="password" placeholder="Entrez un nouveau mot de passe">
+        <input type="password" [(ngModel)]="profile.password" name="password">
       </label>
-
-      <!-- Bouton -->
+    
+      <label>
+        Confirmer mot de passe
+        <input type="password" [(ngModel)]="profile.password_confirmation" name="password_confirmation">
+      </label>
+    
       <div class="profile-btn">
         <button type="submit" class="btn-save">Enregistrer les modifications</button>
       </div>
     </form>
+    
   </main>
 </div>
 

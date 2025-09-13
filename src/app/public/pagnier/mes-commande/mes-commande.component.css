@@ -1,0 +1,230 @@
+.commande-container {
+  padding-top: 90px;
+}
+
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 25px;
+  color: #d35400;
+  text-align: center;
+}
+
+/* === Conteneur table / commandes === */
+.table-container {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+/* === Table === */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+th, td {
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 14px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+  background-color: #fdf3f0;
+  font-weight: 700;
+  color: #d35400;
+  text-transform: uppercase;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+th:hover {
+  background-color: #fde5d9;
+}
+
+/* === Status === */
+.status {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.status:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.delivered {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.cancelled {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+/* === Actions === */
+.actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-reorder, .btn-details {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-reorder {
+  color: #fff;
+  background-color: #d35400;
+}
+
+.btn-reorder:hover {
+  background-color: #e67e22;
+  transform: scale(1.05);
+}
+
+.btn-details {
+  color: #d35400;
+  background-color: transparent;
+  border: 1px solid #d35400;
+}
+
+.btn-details:hover {
+  color: #fff;
+  background-color: #d35400;
+  transform: scale(1.05);
+}
+
+/* === Pagination === */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 8px;
+}
+
+.pagination button {
+  border: none;
+  padding: 8px 14px;
+  background-color: #fdf3f0;
+  color: #d35400;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.pagination button:hover {
+  background-color: #d35400;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* === Responsive cartes pour mobile === */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 20px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  }
+
+  td {
+    border: none;
+    padding: 10px 5px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #d35400;
+    flex: 1;
+  }
+
+  .actions {
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+}
+
+/* === Carte produit style e-commerce === */
+.produit-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.produit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.produit-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.produit-card .nom-produit {
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.produit-card .prix {
+  font-weight: 700;
+  color: #d35400;
+  margin-bottom: 12px;
+}
+
+.produit-card .btn-ajouter {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  border-radius: 12px;
+  background-color: #d35400;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.produit-card .btn-ajouter:hover {
+  background-color: #e67e22;
+  transform: scale(1.05);
+}

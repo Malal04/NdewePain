@@ -54,12 +54,16 @@ export class AuthService {
     return this.http.post<ApiResponse>(`${this.url}/reset-password`, payload);
   }
 
-  updateProfile(payload: UpdateProfileDto): Observable<User> {
+  updateProfile(payload: UpdateProfileDto | FormData): Observable<User> {
     return this.http.post<User>(`${this.url}/update-profile`, payload);
   }
 
   listUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.url}/users`);
+  }
+
+  listEmployesEtGerants(page: number = 1): Observable<any> {
+    return this.http.get<any>(`${this.url}/employes?page=${page}`);
   }
 
   showUser(id: number | string): Observable<User> {

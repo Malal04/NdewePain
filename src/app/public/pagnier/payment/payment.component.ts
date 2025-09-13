@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HeaderComponent } from "../../../_utils/header/header.component";
 import { FooterComponent } from "../../../_utils/footer/footer.component";
+import { PanierService } from '../../../_service/panier.service';
+import { CartResponse } from '../../../_interface/panier';
 
 interface PaymentOption {
   value: string;
@@ -26,8 +28,19 @@ interface PaymentOption {
 })
 export class PaymentComponent {
   selectedPayment: string = 'carte';
+  message: string = '';
+  error: string = '';
+  cart?: CartResponse;
 
-  constructor(private router: Router) {}
+
+  constructor(
+    private router: Router,
+    private panierService: PanierService
+  ) {}
+
+  ngOnInit(): void {
+    this.loadCart();
+  }
 
   paymentOptions: PaymentOption[] = [
     {
@@ -37,7 +50,7 @@ export class PaymentComponent {
       icon: 'fa-credit-card'
     },
     {
-      value: 'livraison',
+      value: 'paiement_a_la_livraison',
       title: 'Paiement à la livraison',
       description: 'Réglez en espèces ou par carte à la réception de votre commande.',
       icon: 'fa fa-box'
@@ -49,16 +62,42 @@ export class PaymentComponent {
       icon: 'fa fa-mobile-screen-button'
     },
     {
-      value: 'orange',
+      value: 'orange_money',
       title: 'Orange Money',
       description: 'Utilisez votre compte Orange Money pour régler vos achats.',
       icon: 'fa fa-coins'
     }
   ];
 
-  confirmPayment() {
-    alert(`✅ Paiement choisi : ${this.selectedPayment}`);
-    this.router.navigate(['/chechout/ordre']);
+  loadCart() {
+    this.panierService.getCart().subscribe({
+      next: (res) => {
+        this.cart = res;
+        console.log("Panier chargé", res);
+        this.message = "Panier chargé avec succès.";
+        setTimeout(() => this.message = '', 3000);
+      },
+      error: () => {
+        this.error = "Impossible de récupérer le panier.";
+        setTimeout(() => this.error = '', 3000);
+      }
+    });
   }
+  
+
+  confirmPayment() {
+    console.log('selection payement', this.selectedPayment )
+    this.panierService.confirmOrder(this.selectedPayment).subscribe({
+      next: (res) => {
+        this.message = "Commande confirmée avec succès !";
+        console.log("Commande validée :", res);
+        this.router.navigate(['/chechout/ordre', res.commande.id]);
+      },
+      error: (err) => {
+        this.error = err.error?.message || "Erreur lors de la confirmation de paiement.";
+      }
+    });
+  }
+  
 
 }

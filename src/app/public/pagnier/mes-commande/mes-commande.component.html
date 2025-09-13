@@ -1,0 +1,50 @@
+<header>
+    <app-header></app-header>
+</header>
+
+<main class="commande-container">
+  <h1>Historique des Commandes</h1>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Commande #</th>
+          <th>Date</th>
+          <th>Total</th>
+          <th>Statut</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cmd of pagedCommandes">
+          <td data-label="Commande #"> #{{cmd.code_commande}}</td>
+          <td data-label="Date">{{cmd.created_at | date:'dd MMM yyyy'}}</td>
+          <td data-label="Total"> {{cmd.total }} FCFA</td>
+          <td data-label="Statut">
+            <span class="status" [ngClass]="getStatusClass(cmd.statut_commande)">{{cmd.statut_commande | titlecase}}</span>
+          </td>
+          <td data-label="Actions" class="actions">
+            <a class="btn-details" 
+               [class.disabled]="!isTrackable(cmd.statut_commande)"
+               (click)="suivi(cmd.id)">Suivi commande
+            </a>
+          
+            <a class="btn-details" (click)="detail(cmd.id)">Voir les détails</a>
+          
+            <a class="btn-details" (click)="facture(cmd.id)" *ngIf="cmd.statut_commande === 'livree'">
+              Facture
+            </a>
+          </td>          
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <button (click)="prevPage()" [disabled]="currentPage === 1">&lt; Précédent</button>
+      <button>{{currentPage}}</button>
+      <button (click)="nextPage()" [disabled]="currentPage * pageSize >= commandes.length">Suivant &gt;</button>
+    </div>
+  </div>
+</main>

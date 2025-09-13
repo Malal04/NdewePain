@@ -1,0 +1,223 @@
+/*  Container principal */
+.employe-container {
+  padding: 60px 20px;
+  background: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.employe {
+  width: 100%;
+  max-width: 1100px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease;
+}
+
+.employe:hover {
+  transform: translateY(-3px);
+}
+
+/* En-tête */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #d35400;
+  margin-bottom: 8px;
+}
+
+.header p {
+  color: #666;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  margin-top: 10px;
+}
+
+.add-employe {
+  background: linear-gradient(135deg, #d35400, #a84300);
+  color: #fff;
+  border: none;
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(211, 84, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.add-employe:hover {
+  background: linear-gradient(135deg, #a84300, #d35400);
+  transform: scale(1.05);
+}
+
+/* Tableau */
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+.employe-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.employe-table th,
+.employe-table td {
+  padding: 14px 18px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.employe-table th {
+  background: #f4f4f4;
+  color: #444;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.employe-table td {
+  border-bottom: 1px solid #eee;
+  color: #333;
+}
+
+.employe-table tr:hover td {
+  background: #fff8f3;
+  transition: background 0.3s ease;
+}
+
+/* Statuts */
+.status {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status.actif {
+  background: #e6f9ec;
+  color: #1a9d57;
+  border: 1px solid #b2e6c0;
+}
+
+.status.inactif {
+  background: #fdecea;
+  color: #c0392b;
+  border: 1px solid #f5b7b1;
+}
+
+/*  Boutons action */
+.edit-btn {
+  background: #f8f9fa;
+  color: #333;
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.edit-btn:hover {
+  background: #d35400;
+  color: #fff;
+  border-color: #d35400;
+}
+
+/* Pagination */
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pagination button {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #d35400;
+  color: #fff;
+  border-color: #d35400;
+}
+
+.pagination button:disabled {
+  background: #f4f4f4;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+/*  États spéciaux */
+.error {
+  color: #c0392b;
+  text-align: center;
+  font-weight: 600;
+  margin: 20px 0;
+}
+
+.empty {
+  text-align: center;
+  color: #777;
+  font-size: 15px;
+  margin: 40px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    text-align: center;
+  }
+
+  .header h1 {
+    font-size: 26px;
+  }
+
+  .employe {
+    padding: 20px;
+  }
+
+  .employe-table th,
+  .employe-table td {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .edit-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .pagination {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

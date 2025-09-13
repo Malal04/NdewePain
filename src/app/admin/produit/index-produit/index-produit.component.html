@@ -31,7 +31,7 @@
       <tbody>
         <tr *ngFor="let produit of produits">
           <td class="product-info">
-            <img [src]="produit.photo_url || 'https://via.placeholder.com/50'" alt="Produit">
+            <img [src]="produit.photo_url || '../../../../assets/painBlog.png'" alt="Produit">
             {{ produit.nom }}
           </td>
           <td> 

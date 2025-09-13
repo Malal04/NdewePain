@@ -1,79 +1,102 @@
 <header class="header-menu">
-    <app-header></app-header>
+  <app-header></app-header>
 </header>
+
 <div class="menu">
+
   <div class="container-menu">
+
     <!-- Filtres -->
     <aside class="filters">
-      <h2>Filtres</h2>
+      <h2><i class="fa fa-filter"></i> Filtres</h2>
 
       <!-- Recherche -->
       <div class="search-box">
-        <i class="ph-magnifying-glass"></i>
-        <input type="text" placeholder="Rechercher un produit...">
+        <i class="fa fa-search"></i>
+        <input type="text" placeholder="Rechercher un produit..."
+               [(ngModel)]="searchTerm" (keyup.enter)="searchProduits()">
       </div>
 
       <!-- Catégories -->
       <div class="filter-group">
-        <h3>Catégorie</h3>
+        <h3><i class="fa fa-list"></i> Catégorie</h3>
         <div class="tags">
-          <span>Boulangerie</span>
-          <span>Pâtisseries</span>
-          <span class="active">Gâteaux</span>
-          <span>Biscuits</span>
+          <span *ngFor="let cat of categories"
+                [class.active]="selectedCategory === cat.id"
+                (click)="filterByCategory(cat.id)">
+            {{ cat.nom }}
+          </span>
         </div>
       </div>
 
       <!-- Régimes -->
       <div class="filter-group">
-        <h3>Régimes spéciaux</h3>
-        <label><input type="checkbox"> Sans Gluten</label>
+        <h3><i class="fa fa-leaf"></i> Régimes spéciaux</h3>
+        <label><input type="checkbox"> Sans gluten</label>
         <label><input type="checkbox"> Vegan</label>
-        <label><input type="checkbox"> Sans Lactose</label>
+        <label><input type="checkbox"> Sans lactose</label>
       </div>
 
       <!-- Boutons -->
-      <button type="submit" class="btn primary">Appliquer</button>
-      <button type="submit" class="btn secondary">Réinitialiser</button>
+      <button class="btn primary" (click)="searchProduits()">
+        <i class="fa fa-check-circle"></i> Appliquer
+      </button>
+      <button class="btn secondary" (click)="resetFilters()">
+        <i class="fa fa-undo"></i> Réinitialiser
+      </button>
     </aside>
 
     <!-- Produits -->
     <main class="products">
+
       <div class="header_menu">
-        <h1>Nos Produits de NdewePain</h1>
+        <h1><i class="fa fa-bread-slice"></i> Nos Produits NdewePain</h1>
         <div class="sort_menu">
-          <label>Trier par :</label>
-          <select class="sort-select">
-            <option>Popularité</option>
-            <option>Prix croissant</option>
-            <option>Prix décroissant</option>
+          <label for="sort">Trier par :</label>
+          <select id="sort" class="sort-select" [(ngModel)]="sortOption" (change)="sortProduits()">
+            <option value="popularite">Popularité</option>
+            <option value="prix_asc">Prix croissant</option>
+            <option value="prix_desc">Prix décroissant</option>
           </select>
         </div>
       </div>
 
-      <!-- Liste produits paginée -->
-      <div class="grid_menu" routerLink="/details" >
+      <!-- Liste produits -->
+      <div class="grid_menu">
         <div class="card_menu"
-             *ngFor="let produit of produits | paginate: { itemsPerPage: itemsParPage, currentPage: page }">
-          <img [src]="produit.image" [alt]="produit.nom">
+             *ngFor="let produit of produits"
+             (click)="viewProduitDetails(produit.id)">
+          <img [src]="produit.photo_url || '../../../assets/painBlog.png'" [alt]="produit.nom">
           <h4>{{ produit.nom }}</h4>
-          <p>{{ produit.prix }} FCFA</p>
+          <p>{{ produit.prix_unitaire }} FCFA</p>
+          <div class="actions-card">
+            <button type="button" class="btn primary" (click)="addProduct(produit.id) ; $event.stopPropagation()">
+              <i class="fa fa-cart-plus"></i> Ajouter
+            </button>
+            <button type="button" class="btn secondary" routerLink="/details/{{produit.id}}" (click)="$event.stopPropagation()">
+              <i class="fa fa-info-circle"></i> Détails
+            </button>
+          </div>
         </div>
       </div>
 
       <!-- Pagination -->
-      <pagination-controls 
-        class="pagination_menu"
-        (pageChange)="page = $event"
-        previousLabel="Précédent"
-        nextLabel="Suivant"
-        screenReaderPaginationLabel="Pagination"
-        screenReaderPageLabel="page"
-        screenReaderCurrentLabel="Vous êtes sur la page">
-      </pagination-controls>
+      <div class="pagination_menu" *ngIf="totalPages > 1">
+        <button type="button" (click)="prevPage()" [disabled]="currentPage === 1">
+          <i class="fa fa-chevron-left"></i> Précédent
+        </button>
+        <span>Page {{ currentPage }} / {{ totalPages }}</span>
+        <button type="button" (click)="nextPage()" [disabled]="currentPage === totalPages">
+          Suivant <i class="fa fa-chevron-right"></i>
+        </button>
+      </div>
+
     </main>
+
   </div>
+
 </div>
+
 <footer class="footer-menu">
-    <app-footer></app-footer>
+  <app-footer></app-footer>
 </footer>

@@ -1,0 +1,122 @@
+.production-container {
+  width: 90%;
+  margin: 30px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.header h1 {
+  font-size: 2rem;
+  color: #2c3e50;
+}
+.header p {
+  color: #7f8c8d;
+  margin: 5px 0 15px;
+}
+.new-task {
+  background: #d35400;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.new-task:hover {
+  background: #e67e22;
+}
+
+/* CALENDRIER */
+.calendar {
+  margin-bottom: 30px;
+}
+.calendar-header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.view-button {
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+  padding: 8px 18px;
+  margin: 0 4px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+.view-button.active, .view-button:hover {
+  background: #d35400;
+  color: #fff;
+}
+.calendar-body table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.calendar-body th, .calendar-body td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #eee;
+}
+
+/* TÂCHES */
+.tasks .task-summary {
+  margin-bottom: 25px;
+}
+.task {
+  background: #fdf6f0;
+  border-left: 5px solid #d35400;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+.status {
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+.status.en\ cours {
+  background: #f39c12;
+  color: #fff;
+}
+.status.programmé {
+  background: #3498db;
+  color: #fff;
+}
+.status.terminé {
+  background: #2ecc71;
+  color: #fff;
+}
+
+/* TABLEAU */
+.task-list {
+  width: 100%;
+  border-collapse: collapse;
+}
+.task-list th {
+  background: #f9f9f9;
+  text-align: left;
+  padding: 12px;
+}
+.task-list td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+.edit-btn {
+  background: #2980b9;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.edit-btn:hover {
+  background: #1f6391;
+}

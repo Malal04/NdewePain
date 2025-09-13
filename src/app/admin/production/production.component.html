@@ -1,0 +1,85 @@
+<main class="production-container">
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Planification de Production</h1>
+    <p>Gérez le planning et les tâches de votre boulangerie en toute simplicité.</p>
+    <button class="new-task" (click)="ajouterTache()">+ Nouvelle Tâche</button>
+  </div>
+
+  <!-- CALENDRIER -->
+  <section class="calendar">
+    <div class="calendar-header">
+      <button 
+        class="view-button" 
+        [class.active]="vueActive === 'jour'" 
+        (click)="changerVue('jour')">Jour</button>
+
+      <button 
+        class="view-button" 
+        [class.active]="vueActive === 'semaine'" 
+        (click)="changerVue('semaine')">Semaine</button>
+
+      <button 
+        class="view-button" 
+        [class.active]="vueActive === 'mois'" 
+        (click)="changerVue('mois')">Mois</button>
+    </div>
+
+    <div class="calendar-body">
+      <table>
+        <thead>
+          <tr>
+            <th *ngFor="let jour of jours">{{ jour }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let semaine of semaines">
+            <td *ngFor="let jour of semaine">{{ jour || '' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- RÉSUMÉ DES TÂCHES -->
+  <section class="tasks">
+    <div class="task-summary">
+      <h3>Tâches pour le {{ dateSelectionnee | date:'longDate' }}</h3>
+      <div *ngFor="let t of tachesSelectionnees" class="task">
+        <h4>{{ t.titre }}</h4>
+        <p><strong>Produit :</strong> {{ t.produit }} ({{ t.quantite }})</p>
+        <p><strong>Affecté à :</strong> {{ t.responsable }}</p>
+        <p><strong>Statut :</strong> 
+          <span class="status" [ngClass]="t.statut">{{ t.statut | titlecase }}</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- TABLEAU GLOBAL -->
+    <h3>Toutes les Tâches de Production</h3>
+    <table class="task-list">
+      <thead>
+        <tr>
+          <th>Tâche</th>
+          <th>Produit</th>
+          <th>Quantité</th>
+          <th>Deadline</th>
+          <th>Affecté à</th>
+          <th>Statut</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of taches">
+          <td>{{ t.titre }}</td>
+          <td>{{ t.produit }}</td>
+          <td>{{ t.quantite }}</td>
+          <td>{{ t.deadline | date:'dd MMM yyyy' }}</td>
+          <td>{{ t.responsable }}</td>
+          <td><span class="status" [ngClass]="t.statut">{{ t.statut | titlecase }}</span></td>
+          <td><button class="edit-btn" (click)="modifierTache(t)">Modifier</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
